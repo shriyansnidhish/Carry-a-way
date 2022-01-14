@@ -10,5 +10,5 @@ Bhavana Nammi<br/>
 
 **Technology Stack:**<br/>
 Go<br/>
-AngularJS<br/>
+Angular 8<br/>
 PostGresql

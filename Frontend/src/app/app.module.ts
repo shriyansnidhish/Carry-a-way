@@ -7,6 +7,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { HomePageComponent } from './home-page/home-page.component';
 import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { LoginComponent } from './login/login.component';
+import { PricingComponent } from './pricing/pricing.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { LoginComponent } from './login/login.component';
     NavigationBarComponent,
     HomePageComponent,
     HowItWorksComponent,
-    LoginComponent
+    LoginComponent,
+    PricingComponent
   ],
   imports: [
     BrowserModule,

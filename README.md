@@ -15,3 +15,4 @@ PostGresql
 
 # Sprint 1 
 Back end demo video link https://drive.google.com/file/d/13BEGO7NGnLeugfpey8UFFCCTKo3zN_wh/view?usp=sharing
+Front end demo video link https://drive.google.com/file/d/1MU2GPqrY8i-x6JLY-GP0xhLomS35nI4k/view?usp=sharing

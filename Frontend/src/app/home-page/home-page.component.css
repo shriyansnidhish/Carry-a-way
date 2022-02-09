@@ -446,7 +446,7 @@ img.wp-smiley,
         background: #f9f9f9;
       }
   
-      .airtable td:first-child {}
+      /* .airtable td:first-child {} */
   
       .airtable td:nth-child(1n+2) {
         max-width: 125px;

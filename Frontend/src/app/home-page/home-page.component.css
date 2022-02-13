@@ -1179,3 +1179,39 @@ img.wp-smiley,
         transition: opacity 400ms;
         transition-delay: 0ms;
       }
+      /*home page image 1 positioning*/
+      .log
+      {
+        position:absolute;
+        top:-35ch;bottom:0ch;right: -50ch;
+      }
+      /*home page image 2 positioning*/
+      .log1
+      {
+        position:absolute;
+        top:-22ch;bottom:0ch;right: -50ch;
+      }
+      /*home page image 3 positioning*/
+      .log2
+      {
+        position:absolute;
+        top:-5ch;bottom:0ch;right: 10ch;
+      }
+      /*home page image 4 positioning*/
+      .log3
+      {
+        position:absolute;
+        top:-2ch;bottom:0ch;right: 10ch;
+      }
+      /*home page image 5 positioning*/
+      .log4
+      {
+        position:absolute;
+        top:12ch;bottom:0ch;right: 10ch;
+      }
+      /*home page image 6 positioning*/
+      .log4
+      {
+        position:absolute;
+        top:2ch;bottom:0ch;right: 10ch;
+      }

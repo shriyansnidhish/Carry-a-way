@@ -1,6 +1,7 @@
 package database
 import(
 	"gorm.io/driver/mysql"
+	//"github.com/jinzhu/gorm/dialects/mysql"
 	"gorm.io/gorm"
 	"CAW/Backend/signupauth/models"
 )
@@ -11,5 +12,6 @@ if err!=nil{
 	panic("could not connect to the database")
 }
 DB = connection
-connection.AutoMigrate(&models.User{})
+connection.AutoMigrate(&models.User{},&models.Bookingtable{},&models.Dispute{},&models.Orderstable{},&models.Pricetable{})
+
 }

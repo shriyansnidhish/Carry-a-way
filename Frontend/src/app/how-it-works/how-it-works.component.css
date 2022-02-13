@@ -62,16 +62,16 @@ border-radius: 50px;
 .fl-page-nav a button {
 font-size: 15px;
 font-weight: 700;
-border: 2px solid #ef3a4c;
+border: 2px solid #1a0674fb;
 border-radius: 50px; 
-color:#ef3a4c !important;
+color:#1a0674fb !important;
 background:#fff;
 }
 
 .fl-page-nav a button:hover,
 .fl-page-nav a button:focus {
 color: #fff !important;
-background-color: #ef3a4c;
+background-color: #1a0674fb;
 }
 
 /* Top Nav Links */
@@ -81,7 +81,7 @@ background-color: #ef3a4c;
 .fl-page-nav-toggle-icon.fl-page-nav-toggle-visible-medium-mobile .fl-page-nav-collapse ul.navbar-nav>li.current-menu-item > a,
 .fl-page-nav-toggle-icon.fl-page-nav-toggle-visible-medium-mobile .fl-page-nav-collapse ul.navbar-nav>li>a:hover,
 .fl-page-nav-toggle-icon.fl-page-nav-toggle-visible-medium-mobile .fl-page-nav-collapse ul.navbar-nav>li>a:focus {
-color: rgb(239, 58, 76);
+color: rgb(10, 3, 70);
 }
 
 /* Top Nav menu */
@@ -136,7 +136,7 @@ outline: none;
 padding: 10px 10px 9px;
 margin-left: -5px;
 border-top-left-radius: 0;
-border: 2px solid #ef3a4c;
+border: 2px solid #1a0674fb;
 border-bottom-left-radius: 0;
 }
 
@@ -274,7 +274,7 @@ border-right: 0px;
 border-bottom: 2px solid #c2c6cc;
 border-radius: 0;
 background-color: #fff;
-    color: #ef3a4c;
+    color: #1a0674fb;
 height: 50px;
 }
 
@@ -317,16 +317,16 @@ color: #00a6a8 !important;
 .wish-form button {
 font-size: 15px;
 font-weight: 700;
-border: 2px solid #ef3a4c;
+border: 2px solid #1a0674fb;
 border-radius: 2px; 
-color:#ef3a4c !important;
+color:#1a0674fb !important;
 background:#fff;
 }
 
 .wish-form button:hover,
 .wish-form button:focus {
 color: #fff !important;
-background-color: #ef3a4c;
+background-color: #1a0674fb;
 }
 
 /* Google Forms  */

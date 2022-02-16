@@ -96,4 +96,23 @@ return c.JSON(fiber.Map{
 			"message":"success",
 		})
 	}
+	func Booking(c *fiber.Ctx) error {
+		var data map[string]string
+		var data1 map[string]uint
+		if err:=c.BodyParser(&data); err!=nil{
+			return err
+		}
+		
+		booking:= models.Bookingtable{
+			Orderid:data1["Orderid"],
+			Source: data["source"],
+			Destination: data["dest"],
+			Arrivaldate :data["ad"],
+	        Numberofbags:data["nb"],
+	        Orderstatus:data["os"],
+			
+		}
+		database.DB.Create(&booking)
+		return c.JSON(booking)
+	}
 	

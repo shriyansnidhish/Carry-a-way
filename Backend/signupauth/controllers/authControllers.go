@@ -7,6 +7,7 @@ import(
 "github.com/dgrijalva/jwt-go"
 "strconv"
 "time"
+"log"
 )
 const SecretKey="secret"
 
@@ -115,4 +116,10 @@ return c.JSON(fiber.Map{
 		database.DB.Create(&booking)
 		return c.JSON(booking)
 	}
+	func check(err error) {
+		if err != nil {
+		  log.Fatal(err)
+		}
+	  }
+	  
 	

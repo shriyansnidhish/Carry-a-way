@@ -3,8 +3,8 @@ import(
 	"CAW/Backend/signupauth/controllers"
 	"CAW/Backend/signupauth/database"
 	"CAW/Backend/signupauth/models"
-	"gorm.io/gorm"
-	"gorm.io/driver/mysql"
+	
+	
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -14,7 +14,7 @@ import(
 )
 
 func TestingSignup(t *testing.T){
-	err:=database.DB.Register(c *fiber.Ctx)
+	err:=c.Register()
 	userinf:=User{
 		"testfirstname",
 		"testlastname",

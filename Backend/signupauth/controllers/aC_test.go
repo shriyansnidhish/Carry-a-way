@@ -14,26 +14,7 @@ import(
 
   
   func TestHelloRoute(t *testing.T) {
-	// Define a structure for specifying input and output data
-	// of a single test case
-	// tests := []struct {
-	//   description  string // description of the test case
-	//   route        string // route path to test
-	//   expectedCode int    // expected HTTP status code
-	// }{
-	//   // First test case
-	//   {
-	// 	description:  "get HTTP status 200",
-	// 	route:        "/hello",
-	// 	expectedCode: 200,
-	//   },
-	//   // Second test case
-	//   {
-	// 	description:  "get HTTP status 404, when route is not exists",
-	// 	route:        "/not-found",
-	// 	expectedCode: 404,
-	//   },
-	// }
+	
 	tests := []struct{
 		Firstname string
 		Lastname string
@@ -52,7 +33,7 @@ import(
 	// Define Fiber app.
 	app := fiber.New()
   
-	// Create route with GET method for test
+	// Create route with POST method for test
 	app.Post("/register", func(c *fiber.Ctx) error {
 	  // Return simple string as response
 	  return c.SendString("Hello, World!")

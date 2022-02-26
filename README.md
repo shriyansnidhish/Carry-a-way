@@ -11,7 +11,7 @@ Bhavana Nammi<br/>
 **Technology Stack:**<br/>
 Go<br/>
 Angular 8<br/>
-PostGresql
+Mysql
 
 # Sprint 1 
 Back end demo video link https://drive.google.com/file/d/13BEGO7NGnLeugfpey8UFFCCTKo3zN_wh/view?usp=sharing<br/>

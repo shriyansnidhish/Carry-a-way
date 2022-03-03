@@ -31,3 +31,8 @@ type Dispute struct{
 	Disputeeligibility string `json:"de"`
 	Description string `json:"desc"`
 } 
+type SigninInfo struct{
+	Username string
+	Password string
+}
+

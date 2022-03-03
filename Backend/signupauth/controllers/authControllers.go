@@ -116,10 +116,10 @@ return c.JSON(fiber.Map{
 		database.DB.Create(&booking)
 		return c.JSON(booking)
 	}
-	func check(err error) {
-		if err != nil {
-		  log.Fatal(err)
-		}
-	  }
+	// func check(err error) {
+	// 	if err != nil {
+	// 	  log.Fatal(err)
+	// 	}
+	//   }
 	  
 	

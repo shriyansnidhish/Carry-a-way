@@ -260,4 +260,32 @@ html {
   #icon {
     width:60%;
   }
-  
+  .button-radio input {
+    opacity: 0;
+    position: absolute;
+}
+
+  .justify-between {
+    justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.row {
+  margin-top: 10px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.button-radio__label {
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: inherit;
+  display: block;
+  padding: 10px 20px;
+}

@@ -24,6 +24,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  RegisterUser(){
+    if(this.username === "admin" && this.userpassword === "admin"){
+      // redirect to dashboard !
+      this.router.navigate(['']);
+  }
+  }
+
   onItemChange($event){
     console.log($event.target.value);
     this.formType = $event.target.value;

@@ -239,7 +239,7 @@ html {
     bottom: -10px;
     width: 0;
     height: 2px;
-    background-color: #56baed;
+    background-color: #1a0674fb;
     content: "";
     transition: width 0.2s;
   }
@@ -299,9 +299,4 @@ html {
   color: #fff;
 }
 
-.button_color{
-  background: #1a0674fb;
-  border-color: #1a0674fb;
-  color: #fff; 
-}
 

@@ -19,13 +19,6 @@
 <div class="wrapper">
     <div id="formContent" *ngIf="formType == 'signIn'">
         <!-- Tabs Titles -->
-
-        <!-- Icon -->
-        <!-- <div class="fadeIn first">
-        <img src="https://cdn1.vectorstock.com/i/1000x1000/66/35/blue-login-icon-vector-3876635.jpg" id="icon"
-          alt="User Icon" />
-      </div> -->
-
         <!-- Login Form -->
         <form>
             <input type="text" id="email" [(ngModel)]="username" name="login" placeholder="Email">
@@ -45,8 +38,8 @@
     </div>
 </div>
 
-<div>
-    <div *ngIf="formType == 'signUp'">
+<div class="wrapper">
+    <div id="formContent" *ngIf="formType == 'signUp'">
         <!-- for sign up -->
         <form>
             <input type="text" id="firstName" [(ngModel)]="firstname" name="firstname" placeholder="First Name">

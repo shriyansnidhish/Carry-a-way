@@ -210,7 +210,7 @@ img.wp-smiley,
       /* Font for Color sections */
       .text-color,
       .text-color * {
-        color: #fff;
+        color: rgb(28, 10, 94);
       }
   
       /* Accessible Links */
@@ -240,22 +240,29 @@ img.wp-smiley,
       /* Buttons */
       .fl-builder-content a.fl-button {
         border-radius: 50px;
+        border: 2px solid #1a0674fb;
+          
+      }
+      .fl-builder-content a.fl-button:hover,
+      .fl-builder-content a.fl-button:focus {
+        color: #fff !important;
+        background-color: #85857cfb;
       }
   
       /* Top Nav Button */
       .fl-page-nav a button {
         font-size: 15px;
         font-weight: 700;
-        border: 2px solid #ef3a4c;
+        border: 2px solid #1a0674fb;
         border-radius: 50px;
-        color: #ef3a4c !important;
+        color: #1a0674fb !important;
         background: #fff;
       }
   
       .fl-page-nav a button:hover,
       .fl-page-nav a button:focus {
         color: #fff !important;
-        background-color: #ef3a4c;
+        background-color: #1a0674fb;
       }
   
       /* Top Nav Links */
@@ -265,7 +272,7 @@ img.wp-smiley,
       .fl-page-nav-toggle-icon.fl-page-nav-toggle-visible-medium-mobile .fl-page-nav-collapse ul.navbar-nav>li.current-menu-item>a,
       .fl-page-nav-toggle-icon.fl-page-nav-toggle-visible-medium-mobile .fl-page-nav-collapse ul.navbar-nav>li>a:hover,
       .fl-page-nav-toggle-icon.fl-page-nav-toggle-visible-medium-mobile .fl-page-nav-collapse ul.navbar-nav>li>a:focus {
-        color: rgb(239, 58, 76);
+        color: rgb(10, 3, 70);
       }
   
       /* Top Nav menu */
@@ -321,7 +328,7 @@ img.wp-smiley,
         padding: 10px 10px 9px;
         margin-left: -5px;
         border-top-left-radius: 0;
-        border: 2px solid #ef3a4c;
+        border: 2px solid #1a0674fb;
         border-bottom-left-radius: 0;
       }
   
@@ -498,7 +505,7 @@ img.wp-smiley,
         border-bottom: 2px solid #c2c6cc;
         border-radius: 0;
         background-color: #fff;
-        color: #ef3a4c;
+        color: #1a0674fb;
         height: 50px;
       }
   
@@ -541,16 +548,16 @@ img.wp-smiley,
       .wish-form button {
         font-size: 15px;
         font-weight: 700;
-        border: 2px solid #ef3a4c;
+        border: 2px solid #1a0674fb;
         border-radius: 2px;
-        color: #ef3a4c !important;
+        color: #1a0674fb !important;
         background: #fff;
       }
   
       .wish-form button:hover,
       .wish-form button:focus {
         color: #fff !important;
-        background-color: #ef3a4c;
+        background-color: #1a0674fb;
       }
   
       /* Google Forms  */
@@ -619,7 +626,7 @@ img.wp-smiley,
         font-family: arial, sans-serif;
         font-size: 14px;
         text-align: center;
-        background: #ef3a4c !important;
+        background: #1a0674fb !important;
         border: 0 !important;
         -moz-border-radius: 2px !important;
         -webkit-border-radius: 2px !important;
@@ -1176,4 +1183,40 @@ img.wp-smiley,
         opacity: 1;
         transition: opacity 400ms;
         transition-delay: 0ms;
+      }
+      /*home page image 1 positioning*/
+      .log
+      {
+        position:absolute;
+        top:-35ch;bottom:0ch;right: -50ch;
+      }
+      /*home page image 2 positioning*/
+      .log1
+      {
+        position:absolute;
+        top:-22ch;bottom:0ch;right: -50ch;
+      }
+      /*home page image 3 positioning*/
+      .log2
+      {
+        position:absolute;
+        top:-5ch;bottom:0ch;right: 10ch;
+      }
+      /*home page image 4 positioning*/
+      .log3
+      {
+        position:absolute;
+        top:-2ch;bottom:0ch;right: 10ch;
+      }
+      /*home page image 5 positioning*/
+      .log4
+      {
+        position:absolute;
+        top:12ch;bottom:0ch;right: 10ch;
+      }
+      /*home page image 6 positioning*/
+      .log4
+      {
+        position:absolute;
+        top:2ch;bottom:0ch;right: 10ch;
       }

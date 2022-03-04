@@ -9,7 +9,7 @@
 
         <label class="button button-radio">
             <input aria-checked="true" name="type" id="ember87" class="ember-view" type="radio" value="signUp"
-                (change)="onItemChange($event)">
+                (change)="onItemChange($event)" [(ngModel)]="mySelection">
 
             <span class="button-radio__label" id="sign-up-label">Sign up</span>
         </label>

@@ -10,6 +10,7 @@ export class LoginComponent implements OnInit {
   username:string="";
   userpassword:string="";
   formType:string="signUp";
+  mySelection = "signUp";
 
   constructor(public router : Router) { }
 

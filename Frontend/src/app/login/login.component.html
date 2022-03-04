@@ -1,18 +1,20 @@
 <div class="flex items-center justify-between row">
     <div class="button-group">
-      <label class="button button-radio">
-          <input aria-checked="false" name="type" id="ember85" class="ember-view" type="radio" value="signIn">
+        <label class="button button-radio">
+            <input aria-checked="false" name="type" id="ember85" class="ember-view" type="radio" value="signIn"
+                >
 
-        <span class="button-radio__label" id="sign-in-label">Sign in</span>
-      </label>
+            <span class="button-radio__label" id="sign-in-label">Sign in</span>
+        </label>
 
-      <label class="button button-radio">
-          <input aria-checked="true" name="type" id="ember87" class="ember-view" type="radio" value="signUp">
+        <label class="button button-radio">
+            <input aria-checked="true" name="type" id="ember87" class="ember-view" type="radio" value="signUp"
+            >
 
-        <span class="button-radio__label" id="sign-up-label">Sign up</span>
-      </label>
-    </div>    
-  </div>
+            <span class="button-radio__label" id="sign-up-label">Sign up</span>
+        </label>
+    </div>
+</div>
 
 <div class="wrapper">
     <div id="formContent">
@@ -27,8 +29,7 @@
         <!-- Login Form -->
         <form>
             <input type="text" id="email" [(ngModel)]="username" name="login" placeholder="Email">
-            <input type="text" id="password" [(ngModel)]="userpassword" name="login"
-                placeholder="password">
+            <input type="text" id="password" [(ngModel)]="userpassword" name="login" placeholder="password">
             <input type="submit" (click)="AuthenticateUser()" value="Sign In">
         </form>
 
@@ -39,6 +40,25 @@
 
         <div id="formFooter">
             <a class="underlineHover" href="#">Don't have an account?</a>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <div>
+        <!-- for sign up -->
+        <form>
+            <input type="text" id="firstName" [(ngModel)]="firstname" name="firstname" placeholder="First Name">
+            <input type="text" id="lastname" [(ngModel)]="lastname" name="lastname" placeholder="Last Name">
+            <input type="text" id="email" [(ngModel)]="username" name="login" placeholder="Email">
+            <input type="text" id="password" [(ngModel)]="userpassword" name="login" placeholder="Password">
+            <input type="submit" (click)="RegisterUser()" value="Sign Up">
+        </form>
+
+        <!-- if account already exists -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Already have an account?</a>
         </div>
 
     </div>

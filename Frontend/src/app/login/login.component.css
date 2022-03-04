@@ -289,3 +289,9 @@ html {
   display: block;
   padding: 10px 20px;
 }
+
+.button-radio input:checked+.button-radio__label {
+  background: #1a0674fb;
+  border-color: #1a0674fb;
+  color: #fff;
+}

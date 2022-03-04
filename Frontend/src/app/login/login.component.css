@@ -82,9 +82,12 @@ html {
   /* FORM TYPOGRAPHY*/
   
   input[type=button], input[type=submit], input[type=reset]  {
-    background-color: #56baed;
+    background: #1a0674fb;
+    border-color: #1a0674fb;
+    color: #fff; 
+    /* background-color: #56baed;
     border: none;
-    color: white;
+    color: white; */
     padding: 15px 80px;
     text-align: center;
     text-decoration: none;
@@ -295,3 +298,10 @@ html {
   border-color: #1a0674fb;
   color: #fff;
 }
+
+.button_color{
+  background: #1a0674fb;
+  border-color: #1a0674fb;
+  color: #fff; 
+}
+

@@ -12,6 +12,6 @@ if err!=nil{
 	panic("could not connect to the database")
 }
 DB = connection
-connection.AutoMigrate(&models.User{},&models.Bookingtable{},&models.Dispute{},&models.Orderstable{},&models.Pricetable{})
+connection.AutoMigrate(&models.User{},&models.Bookingtable{},&models.Dispute{},&models.Orderstable{},&models.Pricetable{},&models.Distance{})
 
 }

@@ -16,6 +16,7 @@ import(
 func TestingSignup(t *testing.T){
 	err:=c.Register()
 	userinf:=User{
+		
 		"testfirstname",
 		"testlastname",
 		"test@a.com",
@@ -35,3 +36,33 @@ func TestingSignup(t *testing.T){
   }
 
 }
+func TestSigninHandler(t *testing.T) {
+	// setup
+	err = database.DB.Connect(testusername, testpassword, testaddress, testdbName)
+	defer database.DB.disconnectDB()
+  
+	signinInfo := SigninInfo{
+	  "testUsername",
+	  "testPassword",
+	}
+  
+	body, err := json.Marshal(signinInfo)
+	check(err)
+  
+	req, err := http.NewRequest("POST", "localhost:8080/login", bytes.NewReader(body))
+	check(err)
+  
+  
+	rr := httptest.NewRecorder()
+	handler := http.HandlerFunc(controllers.Login(c*fiber.Ctx))
+  
+	handler.ServeHTTP(rr, req)
+  
+	if status := rr.Code; status != http.StatusOK {
+	  t.Errorf("handler returned wrong status code: got %v want %v",
+		status, http.StatusOK)
+	}
+  
+	
+  
+  }

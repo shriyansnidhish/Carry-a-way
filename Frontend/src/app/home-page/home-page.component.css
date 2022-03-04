@@ -240,8 +240,13 @@ img.wp-smiley,
       /* Buttons */
       .fl-builder-content a.fl-button {
         border-radius: 50px;
-        border: 2px solid #1a0674fb
-        
+        border: 2px solid #1a0674fb;
+          
+      }
+      .fl-builder-content a.fl-button:hover,
+      .fl-builder-content a.fl-button:focus {
+        color: #fff !important;
+        background-color: #85857cfb;
       }
   
       /* Top Nav Button */

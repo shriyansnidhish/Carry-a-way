@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   username:string="";
   userpassword:string="";
-  
+  formType:string="signUp";
+
   constructor(public router : Router) { }
 
   ngOnInit() {
@@ -21,4 +22,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['']);
     }
   }
+
+  onItemChange($event){
+    console.log($event.target.value);
+    this.formType = $event.target.value;
+  }
+
 }

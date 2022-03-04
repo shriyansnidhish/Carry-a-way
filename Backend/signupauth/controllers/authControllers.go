@@ -7,7 +7,7 @@ import(
 "github.com/dgrijalva/jwt-go"
 "strconv"
 "time"
-"log"
+
 )
 const SecretKey="secret"
 

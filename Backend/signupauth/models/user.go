@@ -1,6 +1,7 @@
 package models
 
 
+
 type User struct {
 	Id        uint   `json:"id" gorm:"primary_key"`
 	FirstName string `json:"fname"`
@@ -17,7 +18,7 @@ type Bookingtable struct {
 	Source      string `json:"source"`
 	Destination string `json:"dest"`
 	Arrivaldate string `json:"ad"`
-	Numberofbags string `json:"nb"`
+	Numberofbags uint `json:"nb"`
 	Orderstatus string `json:"os"`
 
 }
@@ -39,5 +40,7 @@ type Distance struct{
 	SourceDest string `json:"sd"`
 	Dist int `json:"dist"`
 }
+
+
 
 

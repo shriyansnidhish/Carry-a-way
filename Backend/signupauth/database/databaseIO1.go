@@ -55,5 +55,24 @@ func (db *MyDB) getBookingTable(orderid int) ([]models.Bookingtable, error) {
 	}
 	return results, nil
 }
+func (db *MyDB) addBagsNumber(orderid int,numberofbags int) {
+	q1 := fmt.Sprintf(`SELECT %d FROM Bookingtable.result WHERE orderid ='%d';`,numberofbags , orderid)
+	var number int8
+	err := db.QueryRow(q1).Scan(&number)
+	
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	q2 := fmt.Sprintf(`UPDATE Bookingtable.result SET %d = %d WHERE orderid = %d;`, numberofbags, number+1, orderid)
+	r, err3 := db.Query(q2)
+	if r == nil {
+		log.Fatal(err)
+
+	}
+	if err3 != nil {
+		log.Fatal(err)
+	}
+}
 
 

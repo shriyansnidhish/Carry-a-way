@@ -109,7 +109,7 @@ return c.JSON(fiber.Map{
 			Source: data["source"],
 			Destination: data["dest"],
 			Arrivaldate :data["ad"],
-	        Numberofbags:data["nb"],
+	        Numberofbags:data1["nb"],
 	        Orderstatus:data["os"],
 			
 		}

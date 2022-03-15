@@ -13,7 +13,7 @@ import(
 	"github.com/gofiber/fiber/v2"
 )
 
-func TestingSignup(t *testing.T){
+func TestSignup(t *testing.T){
 	err:=c.Register()
 	userinf:=User{
 		
@@ -36,7 +36,7 @@ func TestingSignup(t *testing.T){
   }
 
 }
-func TestSigninHandler(t *testing.T) {
+func TestLogin(t *testing.T){
 	// setup
 	err = database.DB.Connect(testusername, testpassword, testaddress, testdbName)
 	defer database.DB.disconnectDB()
@@ -49,7 +49,7 @@ func TestSigninHandler(t *testing.T) {
 	body, err := json.Marshal(signinInfo)
 	check(err)
   
-	req, err := http.NewRequest("POST", "localhost:8080/login", bytes.NewReader(body))
+	req, err := http.NewRequest("POST", "localhost:8000/login", bytes.NewReader(body))
 	check(err)
   
   

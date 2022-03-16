@@ -27,10 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   LoginUser() {
-    // if(this.username === "admin" && this.userpassword === "admin"){
-    //     // redirect to dashboard !
-    //     this.router.navigate(['']);
-    // }
+    
     console.log("login user function entered");
     var thePromise = this.loginService.loginUsers();
     thePromise.then(
@@ -45,6 +42,9 @@ export class LoginComponent implements OnInit {
     // this.loginService.registerUsers();
     console.log("login user function exited");
 
+    // redirect to pricing page
+    this.router.navigate(['pricing']);
+    
     console.log("check the logged in user");
     var loggedInUserPromise = this.loginService.loggedInUser();
     loggedInUserPromise.then(
@@ -59,10 +59,7 @@ export class LoginComponent implements OnInit {
   }
 
   RegisterUser() {
-    //   if(this.username === "admin" && this.userpassword === "admin"){
-    //     // redirect to dashboard !
-    //     this.router.navigate(['']);
-    // }
+    
     console.log("register user function entered");
     var thePromise = this.loginService.registerUsers();
     thePromise.then(
@@ -76,6 +73,9 @@ export class LoginComponent implements OnInit {
       });
     // this.loginService.registerUsers();
     console.log("register user function exited");
+
+    // redirect to pricing page
+    this.router.navigate(['pricing']);
   }
 
   onItemChange($event) {

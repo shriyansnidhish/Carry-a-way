@@ -1,16 +1,17 @@
 package main
 
 import (
-	"encoding/json"
-	"log"
-	"math/rand"
-	"net/http"
+	//"fmt"
+	 "encoding/json"
+	 "log"
+	 "math/rand"
+	 "net/http"
 	"strconv"
 
 	"github.com/gorilla/mux"
 )
 
-// Book struct (Model)
+// Booking struct (Model)
 type Book struct {
 	Triptype     string  `json:"triptype"`
 	Checkinbags   string  `json:"checkinbags"`
@@ -201,6 +202,11 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8000", r))
 }
 
-	
+
+
+
+
+
+
 
 

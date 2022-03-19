@@ -12,7 +12,7 @@ import(
 	"bytes"
 	"github.com/gofiber/fiber/v2"
 )
-
+//Signup test
 func TestSignup(t *testing.T){
 	err:=c.Register()
 	userinf:=User{
@@ -36,6 +36,7 @@ func TestSignup(t *testing.T){
   }
 
 }
+//Signin test
 func TestLogin(t *testing.T){
 	// setup
 	err = database.DB.Connect(testusername, testpassword, testaddress, testdbName)

@@ -10,6 +10,7 @@ type MyDB struct {
 	*sql.DB
   }
   var db MyDB
+  //Function to check the status of luggage shipment from users
 func (db *MyDB) getShipmentResult(orid int) ([]models.Orderstable, error) {
 	q := fmt.Sprintf(`SELECT status,orid,description,disputeeligibility FROM Orderstable.result WHERE orid = %d ;`, orid)
 	rows, err := db.Query(q)
@@ -25,6 +26,7 @@ func (db *MyDB) getShipmentResult(orid int) ([]models.Orderstable, error) {
 	}
 	return results, nil
 }
+//Function to retrieve the data of customers who claimed dispute eligibility
 func (db *MyDB) getDisputestatus() ([]models.Dispute, error) {
 	q := fmt.Sprintf(`SELECT disputeeligibility,description FROM Dispute.result WHERE disputeeligibility = "YES" ;`)
 	rows, err := db.Query(q)
@@ -40,6 +42,7 @@ func (db *MyDB) getDisputestatus() ([]models.Dispute, error) {
 	}
 	return results, nil
 }
+//Function to retrieve source and destination of luggage 
 func (db *MyDB) getBookingTable(orderid int) ([]models.Bookingtable, error) {
 	q := fmt.Sprintf(`SELECT orderid,source,destination,arrivaldate,numberofbags,orderstatus FROM Bookingtable.result WHERE orderid = %d ;`, orderid)
 	rows, err := db.Query(q)
@@ -55,6 +58,7 @@ func (db *MyDB) getBookingTable(orderid int) ([]models.Bookingtable, error) {
 	}
 	return results, nil
 }
+//Function to add number of bags in the backend
 func (db *MyDB) addBagsNumber(orderid int,numberofbags int) {
 	q1 := fmt.Sprintf(`SELECT %d FROM Bookingtable.result WHERE orderid ='%d';`,numberofbags , orderid)
 	var number int8
@@ -71,6 +75,23 @@ func (db *MyDB) addBagsNumber(orderid int,numberofbags int) {
 
 	}
 	if err3 != nil {
+		log.Fatal(err)
+	}
+}
+//Function to decrease number of bags in the backend
+func (db *MyDB) decreaseBagsNumber(orderid int, numberofbags int) {
+	q1 := fmt.Sprintf(`SELECT %d FROM Bookingtable.result WHERE orderid =%d`, numberofbags, orderid)
+	var number int8
+	err := db.QueryRow(q1).Scan(&number)
+	if err != nil {
+		log.Fatal(err)
+	}
+	q2 := fmt.Sprintf(`UPDATE Bookingtable.result SET %d = %d WHERE orderid =%d';`, numberofbags, number-1, orderid)
+	r, err2 := db.Query(q2)
+	if r == nil {
+		log.Fatal(err)
+	}
+	if err2 != nil {
 		log.Fatal(err)
 	}
 }

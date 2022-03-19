@@ -1,6 +1,6 @@
 package models
 
-
+//various structs automigrated to database as tables
 
 type User struct {
 	Id        uint   `json:"id" gorm:"primary_key"`

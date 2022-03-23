@@ -3,10 +3,10 @@ The idea of Carry-A-way is to provide users with a cheap, convenient, step-by-st
 Carry-A-way is a web application developed using Go and Angular which allows users to travel hassle free without a worry of carrying bulky luggage/items and paying heavy charges to airlines.
 
 **Team:**<br/>
-Shriyans Nidhish<br/>
-Namita<br/>
-Siva Praneeth<br/>
-Bhavana Nammi<br/>
+Shriyans Nidhish (Backend)<br/>
+Namita (Frontend)<br/>
+Siva Praneeth (Backend)<br/>
+Bhavana Nammi (Frontend)<br/>
 
 **Technology Stack:**<br/>
 Go<br/>

@@ -20,6 +20,7 @@ type Bookingtable struct {
 	Arrivaldate string `json:"ad"`
 	Numberofbags uint `json:"nb"`
 	Orderstatus string `json:"os"`
+	Cost uint `json:"cost"`
 
 }
 type Orderstable struct{

@@ -14,13 +14,13 @@ type Pricetable struct {
 	Price    string `json:"price"`
 }
 type Bookingtable struct {
-	Orderid     uint   `json:"Orderid" gorm:"primary_key"`
+	Orderid     string   `json:"Orderid" gorm:"primary_key"`
 	Source      string `json:"source"`
 	Destination string `json:"dest"`
 	Arrivaldate string `json:"ad"`
-	Numberofbags uint `json:"nb"`
+	Numberofbags string `json:"nb"`
 	Orderstatus string `json:"os"`
-	Cost uint `json:"cost"`
+	Cost string `json:"cost"`
 
 }
 type Orderstable struct{

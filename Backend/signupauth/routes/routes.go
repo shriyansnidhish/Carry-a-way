@@ -1,7 +1,9 @@
 package routes
 
-import ("github.com/gofiber/fiber/v2"
-"CAW/Backend/signupauth/controllers"
+import (
+	"CAW/Backend/signupauth/controllers"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 func Setup(app *fiber.App) {
@@ -10,4 +12,6 @@ func Setup(app *fiber.App) {
 	app.Get("/api/user",controllers.User)
 	app.Post("/api/logout",controllers.Logout)
 	app.Post("/api/booking",controllers.Booking)
+	app.Get("/api/orders",controllers.GetOrders)
+	app.Get("/api/orders/id",controllers.GetOrderById)
 }

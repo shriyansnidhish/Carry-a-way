@@ -27,7 +27,7 @@ func EmailConfirmation(mailid string, orderid uint) {
 	subject := "Carry-a-way: Order Confirmation!!!"
 	body := "Dear Customer\n,Thank you for choosing carry-a-way to deliver your luggage\nYour order id is:\n"
 	body = body + s
-	body = body + "\nRegards,\ncarry-a-way team\n"
+	body = body + "\nRegards,\nCarry-a-way team\n"
 
 	message := []byte(subject + body)
 	// athentication data

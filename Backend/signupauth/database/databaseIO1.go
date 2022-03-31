@@ -95,85 +95,85 @@ func (db *MyDB) decreaseBagsNumber(orderid int, numberofbags int) {
 		log.Fatal(err)
 	}
 }
-func (db *MyDB) IncrementCost(Category string) {
-     q1:=fmt.Sprintf(`SELECT %d FROM Bookingtable.result WHERE orderid=%d`,cost,orderid)
-	var number uint;
-	err:=db.QueryRow(q1).Scan(&number)
-	if err!=nil{
-		log.Fatal(err)
-	}
-	if(addBagsNumber(orderid,numberofbags)==True){
-        if(Category=="FEDEX"){
-			q2:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost+10)
-			r,err2:=db.Query(q2)
-			if r == nil{
-				log.Fatal(err)
-			}
-			if err2 != nil{
-				log.Fatal(err)
-			}
-		}
-		if(Category=="UPS"){
-			q3:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost+12)
-			s,err3:=db.Query(q3)
-			if s == nil{
-				log.Fatal(err)
-			}
-			if err3 != nil{
-				log.Fatal(err)
-			}
-		}
-		if(Category=="SHIPGO"){
-			q4:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost+14)
-			t,err4:=db.Query(q2)
-			if t == nil{
-				log.Fatal(err)
-			}
-			if err4 != nil{
-				log.Fatal(err)
-			}
-		}
-	}
-}
-func (db *MyDB) DecrementCost(Category string) {
-	q1:=fmt.Sprintf(`SELECT %d FROM Bookingtable.result WHERE orderid=%d`,cost,orderid)
-   var number uint;
-   err:=db.QueryRow(q1).Scan(&number)
-   if err!=nil{
-	   log.Fatal(err)
-   }
-   if(decreaseBagsNumber(orderid,numberofbags)==True){
-	   if(Category=="FEDEX"){
-		   q2:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost-10)
-		   r,err2:=db.Query(q2)
-		   if r == nil{
-			   log.Fatal(err)
-		   }
-		   if err2 != nil{
-			   log.Fatal(err)
-		   }
-	   }
-	   if(Category=="UPS"){
-		   q3:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost-12)
-		   s,err3:=db.Query(q3)
-		   if s == nil{
-			   log.Fatal(err)
-		   }
-		   if err3 != nil{
-			   log.Fatal(err)
-		   }
-	   }
-	   if(Category=="SHIPGO"){
-		   q4:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost-14)
-		   t,err4:=db.Query(q2)
-		   if t == nil{
-			   log.Fatal(err)
-		   }
-		   if err4 != nil{
-			   log.Fatal(err)
-		   }
-	   }
-   }
-}
+// func (db *MyDB) IncrementCost(Category string) {
+//      q1:=fmt.Sprintf(`SELECT %d FROM Bookingtable.result WHERE orderid=%d`,cost,orderid)
+// 	var number uint;
+// 	err:=db.QueryRow(q1).Scan(&number)
+// 	if err!=nil{
+// 		log.Fatal(err)
+// 	}
+// 	if(addBagsNumber(orderid,numberofbags)==True){
+//         if(Category=="FEDEX"){
+// 			q2:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost+10)
+// 			r,err2:=db.Query(q2)
+// 			if r == nil{
+// 				log.Fatal(err)
+// 			}
+// 			if err2 != nil{
+// 				log.Fatal(err)
+// 			}
+// 		}
+// 		if(Category=="UPS"){
+// 			q3:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost+12)
+// 			s,err3:=db.Query(q3)
+// 			if s == nil{
+// 				log.Fatal(err)
+// 			}
+// 			if err3 != nil{
+// 				log.Fatal(err)
+// 			}
+// 		}
+// 		if(Category=="SHIPGO"){
+// 			q4:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost+14)
+// 			t,err4:=db.Query(q2)
+// 			if t == nil{
+// 				log.Fatal(err)
+// 			}
+// 			if err4 != nil{
+// 				log.Fatal(err)
+// 			}
+// 		}
+// 	}
+// }
+// func (db *MyDB) DecrementCost(Category string) {
+// 	q1:=fmt.Sprintf(`SELECT %d FROM Bookingtable.result WHERE orderid=%d`,cost,orderid)
+//    var number uint;
+//    err:=db.QueryRow(q1).Scan(&number)
+//    if err!=nil{
+// 	   log.Fatal(err)
+//    }
+//    if(decreaseBagsNumber(orderid,numberofbags)==True){
+// 	   if(Category=="FEDEX"){
+// 		   q2:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost-10)
+// 		   r,err2:=db.Query(q2)
+// 		   if r == nil{
+// 			   log.Fatal(err)
+// 		   }
+// 		   if err2 != nil{
+// 			   log.Fatal(err)
+// 		   }
+// 	   }
+// 	   if(Category=="UPS"){
+// 		   q3:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost-12)
+// 		   s,err3:=db.Query(q3)
+// 		   if s == nil{
+// 			   log.Fatal(err)
+// 		   }
+// 		   if err3 != nil{
+// 			   log.Fatal(err)
+// 		   }
+// 	   }
+// 	   if(Category=="SHIPGO"){
+// 		   q4:=fmt.Sprintf(`UPDATE Bookingtable.result SET %d=%d WHERE orderid=%d;`,cost,cost-14)
+// 		   t,err4:=db.Query(q4)
+// 		   if t == nil{
+// 			   log.Fatal(err)
+// 		   }
+// 		   if err4 != nil{
+// 			   log.Fatal(err)
+// 		   }
+// 	   }
+//    }
+// }
 
 

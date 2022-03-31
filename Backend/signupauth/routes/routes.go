@@ -13,5 +13,5 @@ func Setup(app *fiber.App) {
 	app.Post("/api/logout",controllers.Logout)
 	app.Post("/api/booking",controllers.Booking)
 	app.Get("/api/orders",controllers.GetOrders)
-	app.Get("/api/orders/id",controllers.GetOrderById)
+	app.Get("/api/orders/:id",controllers.GetOrderById)
 }

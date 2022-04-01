@@ -2,7 +2,7 @@ package controllers
 import(
 "github.com/gofiber/fiber/v2"
 "CAW/Backend/signupauth/models"
-"golang.org/x/crypto/bcrypt"
+"golang.org/x/crypto/bcrypt"//password encryption package
 "CAW/Backend/signupauth/database"
 "github.com/dgrijalva/jwt-go"
 "strconv"
@@ -10,7 +10,7 @@ import(
 
 )
 const SecretKey="secret"
-
+//User SignUp
 func Register(c *fiber.Ctx) error {
 	var data map[string]string
 	if err:=c.BodyParser(&data); err!=nil{
@@ -25,7 +25,7 @@ func Register(c *fiber.Ctx) error {
 	}
 	database.DB.Create(&user)
 	return c.JSON(user)
-}
+}//User login
 	func Login(c *fiber.Ctx) error{
 		var data map[string]string
 		if err:=c.BodyParser(&data); err!=nil{
@@ -68,7 +68,7 @@ return c.JSON(fiber.Map{
 })
 		
 		
-	}
+	}//retrieving logged in user
 	func User(c *fiber.Ctx) error{
 		cookie:=c.Cookies("jwt")
 		token,err:=jwt.ParseWithClaims(cookie,&jwt.StandardClaims{},func(token *jwt.Token)(interface{},error){
@@ -84,7 +84,7 @@ return c.JSON(fiber.Map{
 		var user models.User
 		database.DB.Where("id=?",claims.Issuer).First(&user)
 		return c.JSON(user)
-	}
+	}//User Logout
 	func Logout(c *fiber.Ctx) error{
 		cookie:=fiber.Cookie{
 			Name:"jwt",
@@ -97,21 +97,22 @@ return c.JSON(fiber.Map{
 			"message":"success",
 		})
 	}
+	//User booking
 	func Booking(c *fiber.Ctx) error {
 		var data map[string]string
-		var data1 map[string]uint
+		//var data1 map[string]uint
 		if err:=c.BodyParser(&data); err!=nil{
 			return err
 		}
 		
 		booking:= models.Bookingtable{
-			Orderid:data1["Orderid"],
+			 Orderid:data["Orderid"],
 			Source: data["source"],
 			Destination: data["dest"],
 			Arrivaldate :data["ad"],
-	        Numberofbags:data1["nb"],
+	         Numberofbags:data["nb"],
 	        Orderstatus:data["os"],
-			
+			Cost:data["cost"],
 		}
 		database.DB.Create(&booking)
 		return c.JSON(booking)

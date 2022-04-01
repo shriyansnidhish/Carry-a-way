@@ -1,5 +1,6 @@
 package models
 
+//various structs automigrated to database as tables
 
 type User struct {
 	Id        uint   `json:"id" gorm:"primary_key"`
@@ -13,12 +14,13 @@ type Pricetable struct {
 	Price    string `json:"price"`
 }
 type Bookingtable struct {
-	Orderid     uint   `json:"Orderid" gorm:"primary_key"`
+	Orderid     string   `json:"Orderid" gorm:"primary_key"`
 	Source      string `json:"source"`
 	Destination string `json:"dest"`
 	Arrivaldate string `json:"ad"`
 	Numberofbags string `json:"nb"`
 	Orderstatus string `json:"os"`
+	Cost string `json:"cost"`
 
 }
 type Orderstable struct{
@@ -39,5 +41,7 @@ type Distance struct{
 	SourceDest string `json:"sd"`
 	Dist int `json:"dist"`
 }
+
+
 
 

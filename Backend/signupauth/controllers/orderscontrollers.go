@@ -57,3 +57,55 @@ func GetOrderById(Orid uint) (models.Orderstable, error) {
 	}
 	return eachOrderById, nil
 }
+
+func UpdateTransitStatus(transitStatus models.Orderstable, Orid uint) (bool, error) {
+
+	ctx, err := database.DB.Begin()
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := ctx.Prepare("UPDATE models.Orderstable SET status = ? WHERE Orid = ?")
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(transitStatus.models.Orderstable, transitStatus.Orid)
+
+	if err != nil {
+		return false, err
+	}
+
+	ctx.Commit()
+
+	return true, nil
+}
+
+func CancelLuggageOrder(Orid uint) (bool, error) {
+
+	ctx, err := database.DB.Begin()
+
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := database.DB.Prepare("DELETE from models.Orderstable where Orid = ?")
+
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(Orid)
+
+	if err != nil {
+		return false, err
+	}
+
+	ctx.Commit()
+
+	return true, nil
+}

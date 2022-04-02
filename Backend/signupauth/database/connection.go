@@ -7,6 +7,7 @@ import(
 )
 
 var DB *gorm.DB
+//connecting to MYSQL database
 func Connect(){
 connection, err:=gorm.Open(mysql.Open("root:Praneeth11@/users"), &gorm.Config{})
 if err!=nil{

@@ -4,7 +4,7 @@ import(
 	"CAW/Backend/signupauth/database"
 	"CAW/Backend/signupauth/models"
 	
-	
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -12,7 +12,7 @@ import(
 	"bytes"
 	"github.com/gofiber/fiber/v2"
 )
-
+//Signup test
 func TestSignup(t *testing.T){
 	err:=c.Register()
 	userinf:=User{
@@ -36,9 +36,10 @@ func TestSignup(t *testing.T){
   }
 
 }
+//Signin test
 func TestLogin(t *testing.T){
 	// setup
-	err = database.DB.Connect(testusername, testpassword, testaddress, testdbName)
+	err = database.DB.ConnectDB(testusername, testpassword, testaddress, testdbName)
 	defer database.DB.disconnectDB()
   
 	signinInfo := SigninInfo{
@@ -66,3 +67,10 @@ func TestLogin(t *testing.T){
 	
   
   }
+  
+func check(err error) {
+	if err != nil {
+	  log.Fatal(err)
+	}
+  }
+  

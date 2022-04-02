@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BagCalculatorComponent } from './bag-calculator/bag-calculator.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { LoginComponent } from './login/login.component';
@@ -10,7 +11,8 @@ var routes: Routes = [
   {path:'',component: HomePageComponent},
   {path:'how-it-works',component: HowItWorksComponent},
   {path:'login',component: LoginComponent},      
-  {path:'pricing',component: PricingComponent}
+  {path:'pricing',component: PricingComponent},
+  {path:'bag-calculator',component: BagCalculatorComponent}
 //   {path:'dashboard',
 //   component: HomePageComponent,
 //   children:[

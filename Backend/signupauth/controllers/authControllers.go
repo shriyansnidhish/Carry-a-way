@@ -117,6 +117,23 @@ return c.JSON(fiber.Map{
 		database.DB.Create(&booking)
 		return c.JSON(booking)
 	}
+	func Orderstable(c *fiber.Ctx) error {
+		var data map[string]string
+		//var data1 map[string]uint
+		if err:=c.BodyParser(&data); err!=nil{
+			return err
+		}
+		
+		booking:= models.Orderstable{
+		    Orid:data["Orderid"],
+			Status: data["status"],
+			Description: data["desc"],
+			Disputeeligibility :data["de"],
+	        
+		}
+		database.DB.Create(&booking)
+		return c.JSON(booking)
+	}
 	// func check(err error) {
 	// 	if err != nil {
 	// 	  log.Fatal(err)

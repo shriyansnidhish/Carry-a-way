@@ -25,9 +25,9 @@ type Bookingtable struct {
 }
 type Orderstable struct{
 	Status string `json:"status" gorm:"primary_key"`
-	Orid uint `gorm:"foreignKey:Orderid"`
+	Orid string `gorm:"foreignKey:Orderid"`
 	Description string `json:"desc"`
-	Disputeeligibility string `json:"de"`
+	Disputeeligibility string `json:"dispute eligibility"`
 }
 type Dispute struct{
 	Disputeeligibility string `json:"de"`

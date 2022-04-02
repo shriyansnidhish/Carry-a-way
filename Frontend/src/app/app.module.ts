@@ -11,6 +11,7 @@ import { PricingComponent } from './pricing/pricing.component';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from './login/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HelpComponent } from './help/help.component';
 import { BagCalculatorComponent } from './bag-calculator/bag-calculator.component';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { BagCalculatorComponent } from './bag-calculator/bag-calculator.componen
     HowItWorksComponent,
     LoginComponent,
     PricingComponent,
+    HelpComponent,
     BagCalculatorComponent
   ],
   imports: [

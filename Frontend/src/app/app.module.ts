@@ -11,6 +11,7 @@ import { PricingComponent } from './pricing/pricing.component';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from './login/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { BagCalculatorComponent } from './bag-calculator/bag-calculator.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomePageComponent,
     HowItWorksComponent,
     LoginComponent,
-    PricingComponent
+    PricingComponent,
+    BagCalculatorComponent
   ],
   imports: [
     BrowserModule,

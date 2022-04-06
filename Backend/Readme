@@ -1,1 +1,14 @@
-
+##Steps to run backend server
+The backend of this project can be run from signupauth.go file which contains the main function.
+We recommend installing visual studio code to run this project. Also it is advisable to install run code plugin for vs code which would
+essentially make it easier to run the project rather being reliable on commands.
+To run the project in command prompt type
+```bash
+go run signupauth.go
+```
+##Steps to run backend tests
+Unit tests can be run automatically through the little annotation present against each testing function
+Or we can execute the following command in cmd prompt:
+```bash
+run go test
+```

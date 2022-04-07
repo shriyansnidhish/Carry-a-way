@@ -2,6 +2,9 @@ package controllers
 
 import (
 	"CAW/Backend/signupauth/database"
+	"fmt"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 func GetUsers() ([]User, error) {
@@ -69,4 +72,44 @@ func isemailExists(email string) bool {
 	retrievedemail := ""
 	row.Scan(&retrievedemail)
 	return retrievedemail != ""
+}
+func AddUsers(userInstance User) (bool, error) {
+
+	ctx, err := database.DB.Begin()
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := ctx.Prepare("INSERT INTO users (firstname, lastname,email) VALUES (?, ?, ?)")
+
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	newmail := isemailExists(userInstance.Email)
+	if newmail {
+		return false, fmt.Errorf("Customer with this Email already exists. Please login to continue")
+	} else {
+
+		encryptedPassword, err := bcrypt.GenerateFromPassword([]byte(userInstance.Password), bcrypt.DefaultCost)
+
+		if err != nil {
+			return false,
+
+				fmt.Errorf("Unexpected error in encryption of user password")
+		}
+
+		newmail.Password = string(encryptedPassword)
+		_, err = stmt.Exec(userInstance.FirstName, userInstance.LastName, userInstance.Email, userInstance.Password)
+
+		if err != nil {
+			return false, err
+		}
+
+		ctx.Commit()
+
+		return true, nil
+	}
 }

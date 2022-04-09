@@ -8,11 +8,11 @@ import (
 	"github.com/gorilla/sessions"
 )
 
-var tmp *template.Template
-var store = sessions.NewCookieStore([]byte("secret key"))
+var tmp *template.Template //struct to access html file in FE
+var cookiedb = sessions.NewCookieStore([]byte("secret key"))//variable to store cookies
 func createSessionHandler(w http.ResponseWriter, r *http.Request) {
 	
-	session, err := store.Get(r, "session-name")
+	session, err := cookiedb.Get(r, "session-name")//declare a session name
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -25,7 +25,7 @@ func createSessionHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	name := r.FormValue("name")
 	if name != "" {
-		session.Values["name"] = name
+		session.Values["name"] = name//giving session values
 	}
 	fmt.Println("session:", session)
 	err = session.Save(r, w)
@@ -33,22 +33,22 @@ func createSessionHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	tmp.ExecuteTemplate(w, "login.html", name)
+	tmp.ExecuteTemplate(w, "login.html", name)//redirects to login page
 }
 
 
 
 func deleteSessionHandler(w http.ResponseWriter, r *http.Request) {
-	session, _ := store.Get(r, "session-name")
+	session, _ := cookiedb.Get(r, "session-name")
 	session.Options.MaxAge = -1
 	fmt.Println("session:", session)
-	session.Save(r, w)
+	session.Save(r, w)//saving the current session
 	tmp.ExecuteTemplate(w, "deleteloginsession.html", nil)
 }
 
 
 func main() {
-	tmp, _ = template.ParseGlob("Froentend/src/app/*.html")
+	tmp, _ = template.ParseGlob("Froentend/src/app/*.html")//access FE templates
 	http.HandleFunc("/login", createSessionHandler)
 	http.HandleFunc("/delete", deleteSessionHandler)
 	http.ListenAndServe("localhost:8000", context.ClearHandler(http.DefaultServeMux))

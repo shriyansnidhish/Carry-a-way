@@ -24,7 +24,7 @@ func Register(c *fiber.Ctx) error {
 		Email: data["email"],
 		Password:password,
 	}
-	stmt := "SELECT Id FROM bcrypt WHERE FirstName = ?"
+	stmt := "SELECT Id FROM users WHERE FirstName = ?"
 	row := database.DB.Query(stmt,user.FirstName)
 	var uID string
 	err := row.Scan(&uID)

@@ -9,6 +9,10 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { LoginComponent } from './login/login.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { FormsModule } from '@angular/forms';
+import { LoginService } from './login/login.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HelpComponent } from './help/help.component';
+import { BagCalculatorComponent } from './bag-calculator/bag-calculator.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +21,17 @@ import { FormsModule } from '@angular/forms';
     HomePageComponent,
     HowItWorksComponent,
     LoginComponent,
-    PricingComponent
+    PricingComponent,
+    HelpComponent,
+    BagCalculatorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

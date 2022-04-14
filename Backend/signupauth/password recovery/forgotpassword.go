@@ -115,6 +115,7 @@ func forgotPasswordValue(w http.ResponseWriter, r *http.Request) {
 		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)
 		return
 	}
+	//updating the new user data will be deferred if there is a delay in transaction commit
 	defer updateEmailVerStmt.Close()
 	emailVerPWhashStr := string(emailVerPWhash)
 	var result sql.Result
@@ -131,19 +132,23 @@ func forgotPasswordValue(w http.ResponseWriter, r *http.Request) {
 		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)
 		return
 	}
+	//block of code to send email for account recovery info
 	from := os.Getenv("FromEmailAddr") 
 	password := os.Getenv("SMTPpwd")   
 	to := []string{email}
 	host := "smtp.gmail.com"
 	port := "587"
 	address := host + ":" + port
+	//Header of the email
 	subject := "Subject: Carry-A-Way account recovery\n"
+	//body containing link to frontend password reset page
 	body := "<body><a rel=\"nofollow noopener noreferrer\" target=\"_blank\" href=\"https://localhost:4200/login?u=" + username + "&evpw=" + emailVerPassword + "\">Change Password</a></body>"
 	mime := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
 	message := []byte(subject + mime + body)
 	auth := smtp.PlainAuth("", from, password, host)
 	fmt.Println("message:", string(message))
 	err = smtp.SendMail(address, auth, from, to, message)
+	//if error in sending account recovery info
 	if err != nil {
 		fmt.Println("error sending reset password email, err:", err)
 		if rollbackErr := tx.Rollback(); rollbackErr != nil {
@@ -152,6 +157,7 @@ func forgotPasswordValue(w http.ResponseWriter, r *http.Request) {
 		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)
 		return
 	}
+	//committing the changes 
 	if commitErr := tx.Commit(); commitErr != nil {
 		fmt.Println("there was an error in commiting the changes", commitErr)
 		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)

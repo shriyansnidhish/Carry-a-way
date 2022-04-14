@@ -3,6 +3,7 @@ package service
 import (
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -34,5 +35,54 @@ func GetCustomerswithId(c *fiber.Ctx) {
 		return
 	} else {
 		c.JSON(http.StatusOK, fiber.Map{"info": customer})
+	}
+}
+func AddCustomers(c *fiber.Ctx) {
+	var json controllers.User
+
+	if err := c.ShouldBindJSON(&json); err != nil {
+		c.JSON(http.StatusBadRequest, fiber.Map{"error": err.Error()})
+		return
+	}
+
+	success, err := controllers.AddCustomers(json)
+
+	if success {
+		c.JSON(http.StatusOK, fiber.Map{"message": "Success"})
+	} else {
+		c.JSON(http.StatusBadRequest, fiber.Map{"error": err.Error()})
+	}
+}
+
+func UpdateCustomerdetails(c *fiber.Ctx) {
+	customerid := c.Params("customerid")
+
+	customer, err := controllers.GetCustomerswithId(customerid)
+	check(err)
+	// if the Firstname is blank we can assume nothing is found and no need to perform Update task
+	if customer.FirstName == "" {
+		c.JSON(http.StatusBadRequest, fiber.Map{"error": "Customer details with requested id is not found"})
+		return
+	} else {
+		var json controllers.User
+
+		if err := c.ShouldBindJSON(&json); err != nil {
+			c.JSON(http.StatusBadRequest, fiber.Map{"error": err.Error()})
+			return
+		}
+
+		custId, err := strconv.Atoi(customerid)
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, fiber.Map{"error": "Invalid customerid"})
+		}
+
+		success, err := controllers.UpdateCustomerdetails(json, custId)
+
+		if success {
+			c.JSON(http.StatusOK, fiber.Map{"message": "Success"})
+		} else {
+			c.JSON(http.StatusBadRequest, fiber.Map{"error": err.Error()})
+		}
 	}
 }

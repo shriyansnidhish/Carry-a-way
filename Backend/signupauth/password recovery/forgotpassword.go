@@ -20,32 +20,38 @@ import(
 // 	"CAW/Backend/signupauth/controllers"
 // 	"CAW/Backend/signupauth/usersessions"
  )
-var tmp*template.Template
+ //template to access FE html pages
+var tmp*template.Template 
 var db *sql.DB
-type UserData struct {
+type UserData struct { //UserData to store carry a way users details...works in conjuction with models.User
 	Username   string
 	Email      string
 	AuthInfo   string
 	ErrMessage string
 	Message    string
 }
+//variable to store cookies 
 var cookiedb = sessions.NewCookieStore([]byte(os.Getenv("Cookiedbstore")))
+//Handler to take username and email verification password for account recovery
 func forgotpwChangeHandler(w http.ResponseWriter, r *http.Request) {
-	username := r.FormValue("u")
-	emailVerPassword := r.FormValue("evpw")
+	username := r.FormValue("u") //takes the username for password recovery
+	emailVerPassword := r.FormValue("evpw")// evpw provides the account recovery password
 	fmt.Println("username:", username)
 	fmt.Println("emailVerPassword:", emailVerPassword)
 	var ud UserData
 	ud.AuthInfo = "?u=" + username + "&evpw=" + emailVerPassword
-	tmp.ExecuteTemplate(w, "login.html", ud)
+	tmp.ExecuteTemplate(w, "login.html", ud)//access login page for password reset
 }
 
+//function to capture the password value
 func forgotPasswordValue(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	email := r.FormValue("email")
 	fmt.Println("email:", email)
 	var ud UserData
+	//if entered incorrect email value
 	ud.ErrMessage = "Sorry, your account seems to be absent from the database, please try with a correct email"
+	//Begin the transaction
 	tx, err := db.Begin()
 	if err != nil {
 		fmt.Println("error occured before beginning the transaction:", err)
@@ -55,10 +61,14 @@ func forgotPasswordValue(w http.ResponseWriter, r *http.Request) {
 		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)
 		return
 	}
+	//rollback changes if no action is taken
 	defer tx.Rollback()
 	var username string
+	//Query to select email for sending password recovery info
 	row := db.QueryRow("SELECT email, username FROM users WHERE email = ?", email)
+	//read the emailid
 	err = row.Scan(&email, &username)
+	//check if the email id valid or not
 	if err != nil {
 		fmt.Println("email not found in db")
 		if rollbackErr := tx.Rollback(); rollbackErr != nil {
@@ -68,22 +78,25 @@ func forgotPasswordValue(w http.ResponseWriter, r *http.Request) {
 		tmp.ExecuteTemplate(w, "login.html", nil)
 		return
 	}
+	//clock starts ticking ,the user has to reset password before it becomes invalid
 	now := time.Now()
 	timeout := now.Add(time.Minute * 45)
 	rand.Seed(time.Now().UnixNano())
-	var alphaNumRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
+	var alphaNumRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")//string of characters allowed
 	emailVerRandRune := make([]rune, 64)
 	for i := 0; i < 64; i++ {
 		emailVerRandRune[i] = alphaNumRunes[rand.Intn(len(alphaNumRunes)-1)]
 	}
 	fmt.Println("change password emailVerRandRune:", emailVerRandRune)
 	emailVerPassword := string(emailVerRandRune)
-	fmt.Println("emailVerPassword:", emailVerPassword)
-	fmt.Println("emailVerPassword len:", len(emailVerPassword))
+	// fmt.Println("emailVerPassword:", emailVerPassword)
+	// fmt.Println("emailVerPassword len:", len(emailVerPassword))
 	var emailVerPWhash []byte
-	emailVerPWhash, err = bcrypt.GenerateFromPassword([]byte(emailVerPassword), bcrypt.DefaultCost)
+	emailVerPWhash, err = bcrypt.GenerateFromPassword([]byte(emailVerPassword), bcrypt.DefaultCost) //hasing the password
+	//if error is present...rollback the changes
 	if err != nil {
 		fmt.Println("bcrypt err:", err)
+		//if error in rollback...print the appropriate message on console
 		if rollbackErr := tx.Rollback(); rollbackErr != nil {
 			fmt.Println("there was an error in rolling back changes", rollbackErr)
 		}
@@ -91,10 +104,12 @@ func forgotPasswordValue(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var updateEmailVerStmt *sql.Stmt
+	//updating the new data from user to database
 	updateEmailVerStmt, err = tx.Prepare("UPDATE email_ver_hash SET ver_hash = ?, timeout = ? WHERE email = ?;")
 	if err != nil {
 		fmt.Println("error preparing statement:", err)
 		if rollbackErr := tx.Rollback(); rollbackErr != nil {
+			//error in rollback
 			fmt.Println("there was an error in rolling back changes", rollbackErr)
 		}
 		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)

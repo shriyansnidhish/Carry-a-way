@@ -7,13 +7,13 @@ import(
 	"net/http"
 	"net/smtp"
 	"os"
-	"strings"
+//	"strings"
 	"time"
 	"unicode"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/gorilla/context"
-	"github.com/gorilla/sessions"
+//	"github.com/gorilla/context"
+//	"github.com/gorilla/sessions"
 	"golang.org/x/crypto/bcrypt"
 // 	"CAW/Backend/signupauth/models"
 // 	"CAW/Backend/signupauth/database"
@@ -164,3 +164,178 @@ func forgotPasswordValue(w http.ResponseWriter, r *http.Request) {
 	}
 	tmp.ExecuteTemplate(w, "login.html", nil)
 }
+
+
+func forgotPWverHandler(w http.ResponseWriter, r *http.Request) {
+	username := r.FormValue("u")
+	emailVerPassword := r.FormValue("evpw")
+	userPassword := r.FormValue("password")
+	confirmPassword := r.FormValue("confirmpassword")
+	fmt.Println("username:", username)
+	fmt.Println("emailVerPassword:", emailVerPassword)
+	fmt.Println("userPassword:", userPassword)
+	fmt.Println("confirmPassword:", confirmPassword)
+	var ud UserData
+	ud.ErrMessage = "Sorry, there was an issue recovering account, please try again"
+	ud.AuthInfo = "?u=" + username + "&evpw=" + emailVerPassword
+	// check if userPassword and confirmpassword are the same
+	if userPassword != confirmPassword {
+		fmt.Println("passwords are not matching")
+		ud.ErrMessage = "passwords must match"
+		tmp.ExecuteTemplate(w, "login.html", ud)
+	}
+	tx, err := db.Begin()
+	if err != nil {
+		fmt.Println("failed to begin transaction, err:", err)
+		if rollbackErr := tx.Rollback(); rollbackErr != nil {
+			fmt.Println("there was an error rolling back changes, rollbackErr:", rollbackErr)
+		}
+		tmp.ExecuteTemplate(w, "forgotpassword.html", ud.ErrMessage)
+		return
+	}
+	// rollback will be ignored if the tx has been committed later in the function
+	defer tx.Rollback()
+	// retrieving ver_hash and timeout from email_ver_hash table
+	var dbEmailVerHash string
+	var timeout time.Time
+	row := db.QueryRow("SELECT ver_hash, timeout FROM email_ver_hash WHERE username = ?", username)
+	err = row.Scan(&dbEmailVerHash, &timeout)
+	if err != nil {
+		fmt.Println("ver_hash not found in db")
+		if rollbackErr := tx.Rollback(); rollbackErr != nil {
+			fmt.Println("there was an error rolling back changes", rollbackErr)
+		}
+		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)
+		return
+	}
+	// check if within timelimit
+	currentTime := time.Now()
+	// func (t Time) After(u Time) bool, After reports whether the time instant t is after u.
+	if currentTime.After(timeout) {
+		fmt.Println("users:", username, "didn't verify account within 24 hours")
+		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)
+		// func (tx *Tx) Rollback() error
+		if rollbackErr := tx.Rollback(); rollbackErr != nil {
+			fmt.Println("there was an error rolling back changes", rollbackErr)
+		}
+		return
+	}
+	fmt.Println("dbEmailVerHash:", dbEmailVerHash)
+	// check if db ver_hash is the same as the hash of emailVerPassword from email
+	err = bcrypt.CompareHashAndPassword([]byte(dbEmailVerHash), []byte(emailVerPassword))
+	if err != nil {
+		fmt.Println("dbEmailVerHash and hash of emailVerPassword are not the same")
+		// func (tx *Tx) Rollback() error
+		if rollbackErr := tx.Rollback(); rollbackErr != nil {
+			fmt.Println("there was an error rolling back changes", rollbackErr)
+		}
+		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)
+		return
+	}
+	fmt.Println("dbEmailVerHash and hash of emailVerPassword are the same")
+	// check userPassword criteria
+	err = checkPasswordCriteria(userPassword)
+	if err != nil {
+		ud.AuthInfo = "?u=" + username + "&evpw=" + emailVerPassword
+		// saving password criteria error to inform user
+		ud.ErrMessage = err.Error()
+		tmp.ExecuteTemplate(w, "login.html", ud)
+		return
+	}
+	// generate hash for new userPassword
+	var hash []byte
+	// generate emailVerPassword hash for db
+	hash, err = bcrypt.GenerateFromPassword([]byte(userPassword), bcrypt.DefaultCost)
+	if err != nil {
+		fmt.Println("bcrypt err:", err)
+		if rollbackErr := tx.Rollback(); rollbackErr != nil {
+			fmt.Println("there was an error rolling back changes", rollbackErr)
+		}
+		tmp.ExecuteTemplate(w, "signup.html", ud.ErrMessage)
+		return
+	}
+	// update db with new userPasswordHash
+	stmt := "UPDATE users SET hash = ? WHERE username = ?"
+	updateHashStmt, err := tx.Prepare(stmt)
+	if err != nil {
+		fmt.Println("error preparing updateHashStmt err:", err)
+		if rollbackErr := tx.Rollback(); rollbackErr != nil {
+			fmt.Println("there was an error rolling back changes", rollbackErr)
+		}
+		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)
+		return
+	}
+	defer updateHashStmt.Close()
+	var result sql.Result
+	result, err = updateHashStmt.Exec(hash, username)
+	rowsAff, _ := result.RowsAffected()
+	fmt.Println("rowsAff:", rowsAff)
+	// check for successfull insert
+	if err != nil || rowsAff != 1 {
+		fmt.Println("error inserting new user, err:", err)
+		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)
+		if rollbackErr := tx.Rollback(); rollbackErr != nil {
+			fmt.Println("there was an error rolling back changes", rollbackErr)
+		}
+		return
+	}
+	if commitErr := tx.Commit(); commitErr != nil {
+		fmt.Println("there was an error in commiting changes", commitErr)
+		tmp.ExecuteTemplate(w, "login.html", ud.ErrMessage)
+		return
+	}
+	fmt.Println("forgotten password has been reset")
+	ud.Message = "Password has been successfully Updated"
+	tmp.ExecuteTemplate(w, "login.html", ud)
+}
+
+func checkPasswordCriteria(password string) error {
+	var err error
+	// variables that must pass for password creation criteria
+	var pswdLowercase, pswdUppercase, pswdNumber, pswdSpecial, pswdLength, pswdNoSpaces bool
+	pswdNoSpaces = true
+	for _, char := range password {
+		switch {
+		//func to check if password contains lower case characters
+		case unicode.IsLower(char):
+			pswdLowercase = true
+		//func to check if password contains upper case characters
+		case unicode.IsUpper(char):
+			pswdUppercase = true
+			err = errors.New("Pa")
+		//func to check if password contains numericals
+		case unicode.IsNumber(char):
+			pswdNumber = true
+	//func to check if password contains special characters
+		case unicode.IsPunct(char) || unicode.IsSymbol(char):
+			pswdSpecial = true
+		//func to check if password contains empty characters
+		case unicode.IsSpace(int32(char)):
+			pswdNoSpaces = false
+		}
+	}
+	// check password length
+	if 11 < len(password) && len(password) < 60 {
+		pswdLength = true
+	}
+	// create error message for any criteria not passed
+	if !pswdLowercase || !pswdUppercase || !pswdNumber || !pswdSpecial || !pswdLength || !pswdNoSpaces {
+		switch false {
+		case pswdLowercase:
+			err = errors.New("Password must contain atleast one lower case letter")
+		case pswdUppercase:
+			err = errors.New("Password must contain atleast one uppercase letter")
+		case pswdNumber:
+			err = errors.New("Password must contain atleast one number")
+		case pswdSpecial:
+			err = errors.New("Password must contain atleast one special character")
+		case pswdLength:
+			err = errors.New("Passward length must atleast 12 characters and less than 60")
+		case pswdNoSpaces:
+			err = errors.New("Password cannot have any spaces")
+		}
+		return err
+	}
+	return nil
+}
+

@@ -86,3 +86,27 @@ func UpdateCustomerdetails(c *fiber.Ctx) {
 		}
 	}
 }
+func DeleteCustomer(c *fiber.Ctx) {
+	customerid := c.Params("customerid")
+
+	customer, err := controllers.GetUserById(id)
+	check(err)
+
+	if customer.FirstName == "" {
+		c.JSON(http.StatusBadRequest, fiber.Map{"error": "The customer id requested to delete is not found"})
+		return
+	} else {
+		custId, err := strconv.Atoi(customerid)
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, fiber.Map{"error": "Invalid customerid"})
+		}
+		success, err := controllers.DeleteUser(custId)
+
+		if success {
+			c.JSON(http.StatusOK, fiber.Map{"message": "Success"})
+		} else {
+			c.JSON(http.StatusBadRequest, fiber.Map{"error": err.Error()})
+		}
+	}
+}

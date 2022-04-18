@@ -15,10 +15,10 @@ import(
 //	"github.com/gorilla/context"
 //	"github.com/gorilla/sessions"
 	"golang.org/x/crypto/bcrypt"
-// 	"CAW/Backend/signupauth/models"
-// 	"CAW/Backend/signupauth/database"
-// 	"CAW/Backend/signupauth/controllers"
-// 	"CAW/Backend/signupauth/usersessions"
+ 	"CAW/Backend/signupauth/models"
+ 	"CAW/Backend/signupauth/database"
+ 	"CAW/Backend/signupauth/controllers"
+	"CAW/Backend/signupauth/usersessions"
  )
  //template to access FE html pages
 var tmp*template.Template 

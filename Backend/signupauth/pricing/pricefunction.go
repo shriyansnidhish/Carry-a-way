@@ -101,3 +101,6 @@ func (db *MyDB)DisputeFuncPrice(Disputeeligibility string) {
 		)
 	}
 }
+func (db MyDB) disconnectDB() error {
+	return db.Close()
+  }

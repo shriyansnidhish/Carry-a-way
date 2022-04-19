@@ -43,6 +43,11 @@ type Distance struct{
 	Dist int `json:"dist"`
 	MinCost int `json:"mcost"`
 }
+type ChatMessage struct {
+	Username string `json:"username"`
+	Text     string `json:"text"`
+}
+
 
 
 

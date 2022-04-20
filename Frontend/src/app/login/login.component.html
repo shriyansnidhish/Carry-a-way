@@ -21,8 +21,8 @@
         <!-- Tabs Titles -->
         <!-- Login Form -->
         <form>
-            <input type="text" id="email" [(ngModel)]="username" name="login" placeholder="Email">
-            <input type="text" id="password" [(ngModel)]="userpassword" name="login" placeholder="password">
+            <input type="text" id="email" [(ngModel)]="logInUser" name="login" placeholder="Email">
+            <input type="password" id="password" [(ngModel)]="logInPassword" name="login" placeholder="password">
             <input type="submit" (click)="LoginUser()" value="Sign In">
         </form>
 
@@ -45,7 +45,7 @@
             <input type="text" id="firstName" [(ngModel)]="firstname" name="firstname" placeholder="First Name">
             <input type="text" id="lastname" [(ngModel)]="lastname" name="lastname" placeholder="Last Name">
             <input type="text" id="email" [(ngModel)]="username" name="login" placeholder="Email">
-            <input type="text" id="password" [(ngModel)]="userpassword" name="login" placeholder="Password">
+            <input type="password" id="password" [(ngModel)]="userpassword" name="login" placeholder="Password">
             <input type="submit" (click)="RegisterUser()" value="Sign Up">
         </form>
 

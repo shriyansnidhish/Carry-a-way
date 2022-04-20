@@ -7,7 +7,8 @@ import(
 "github.com/dgrijalva/jwt-go"
 "strconv"
 "time"
-
+"fmt"
+"database/sql"
 )
 const SecretKey="secret"
 //User SignUp
@@ -23,6 +24,15 @@ func Register(c *fiber.Ctx) error {
 		Email: data["email"],
 		Password:password,
 	}
+	 stmt := "SELECT Id FROM users WHERE Email = ?"
+	 row := database.DB.Query(stmt,user.Email)
+	 var uID string
+	err := row.Scan(&uID)
+	 if err != sql.ErrNoRows {
+	 	fmt.Println("Email already exists, err:", err)
+		
+		
+	 }
 	database.DB.Create(&user)
 	return c.JSON(user)
 }//User login
@@ -134,10 +144,6 @@ return c.JSON(fiber.Map{
 		database.DB.Create(&booking)
 		return c.JSON(booking)
 	}
-	// func check(err error) {
-	// 	if err != nil {
-	// 	  log.Fatal(err)
-	// 	}
-	//   }
+
 	  
 	

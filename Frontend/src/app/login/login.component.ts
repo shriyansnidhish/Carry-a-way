@@ -15,6 +15,8 @@ import { newUser } from './signUp.model';
 export class LoginComponent implements OnInit {
   username: string = "";
   userpassword: string = "";
+  logInUser:string = "";
+  logInPassword:string = "";
   formType: string = "signUp";
   mySelection = "signUp";
   registerUser: newUser[] = [];
@@ -79,6 +81,10 @@ export class LoginComponent implements OnInit {
   }
 
   onItemChange($event) {
+    this.username ="";
+  this.userpassword= "";
+  this.logInUser = "";
+  this.logInPassword = "";
     console.log($event.target.value);
     this.formType = $event.target.value;
   }

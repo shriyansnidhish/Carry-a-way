@@ -49,9 +49,9 @@ func deleteSessionHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	tmp, _ = template.ParseGlob("Froentend/src/app/*.html")//access FE templates
-	http.HandleFunc("/login", createSessionHandler)//calling to create sessions
-	http.HandleFunc("/delete", deleteSessionHandler)
-	http.ListenAndServe("localhost:8000", context.ClearHandler(http.DefaultServeMux))
+	http.HandleFunc("/loginsession", createSessionHandler)//calling to create sessions
+	http.HandleFunc("/delete", deleteSessionHandler)//delete the user session
+	http.ListenAndServe("localhost:8000", context.ClearHandler(http.DefaultServeMux))//wrapping in case mux is not used
 }
 
 

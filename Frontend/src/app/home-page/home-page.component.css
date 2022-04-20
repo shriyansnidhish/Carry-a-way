@@ -284,8 +284,8 @@ img.wp-smiley,
       /* Mobile Nav Logo */
       @media (min-width: 768px) {
         .fl-page-header .fl-page-nav ul.sub-menu {
-          width: auto;
-          padding-top: 0px;
+          width: 15px;
+          padding-top: 15px;
         }
       }
 
@@ -1222,7 +1222,7 @@ img.wp-smiley,
       .log1
       {
         position:absolute;
-        top:-22ch;bottom:0ch;right: -50ch;
+        top:-22ch;bottom:0ch;right: -45ch;
       }
       /*home page image 3 positioning*/
       .log2

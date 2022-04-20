@@ -442,3 +442,318 @@ img.wp-smiley,
           max-width: 400px;
         }
       }
+.airtable {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            margin-bottom: 1em;
+            border: 1px solid #ddd;
+            background: #fff;
+          }
+      
+          .airtable thead th {
+            background-color: #272727;
+            color: #fff;
+            font-weight: 700;
+            text-align: left;
+            vertical-align: text-top;
+            padding: 8px;
+            float: none !important;
+          }
+      
+          .airtable tr {
+            border-top: 1px solid #ddd;
+          }
+      
+          .airtable td {
+            vertical-align: top;
+            padding: 8px;
+            border: none;
+            background: 0 0;
+            text-align: left;
+            float: none !important;
+          }
+      
+          .airtable tr:nth-child(even) {
+            background: #f9f9f9;
+          }
+      
+          /* .airtable td:first-child {} */
+      
+          .airtable td:nth-child(1n+2) {
+            max-width: 125px;
+          }
+      
+          /* Post Customizations */
+          .blog-list li {
+            list-style-type: none;
+            padding-top: 5px;
+            padding-bottom: 5px;
+          }
+      
+          .post-template-default.single-post .fl-post h1 {
+            font-size: 54px;
+            line-height: 1.2;
+          }
+      
+          .post-template-default.single-post .fl-post p {
+            margin-bottom: 15px;
+          }
+      
+          .post-template-default.single-post .fl-post h5 {
+            text-align: left;
+            margin-bottom: 0px;
+          }
+      
+          /* Legal Pages - App*/
+          .hide-retail-nav {
+            display: none;
+          }
+      
+          /* MADLIB Wish Form */
+          .wish-form p,
+          .wish-form input {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 50px;
+          }
+      
+          .wish-form input,
+          .wish-form select {
+            width: 325px;
+            max-width: 100%;
+            padding: 0px;
+            padding-bottom: 5px;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            border-bottom: 2px solid #c2c6cc;
+            border-radius: 0;
+            background-color: #fff;
+            color: #1a0674fb;
+            height: 50px;
+          }
+      
+          .wish-form input[type=checkbox] {
+            width: auto;
+            height: auto;
+          }
+      
+          .wish-form .mad-lib {
+            display: inline;
+            text-align: center;
+          }
+      
+          .wish-form .name {
+            display: inline;
+            width: 49%;
+            max-width: 250px;
+          }
+      
+          .wish-form .email {
+            display: inline;
+            width: 100%;
+            max-width: 500px;
+          }
+      
+          .wish-form label {
+            font-weight: 400;
+            line-height: 30px;
+          }
+      
+          .wish-form a {
+            color: #008183 !important;
+            text-decoration: underline;
+          }
+      
+          .wish-form a:hover {
+            color: #00a6a8 !important;
+          }
+      
+          .wish-form button {
+            font-size: 15px;
+            font-weight: 700;
+            border: 2px solid #1a0674fb;
+            border-radius: 2px;
+            color: #1a0674fb !important;
+            background: #fff;
+          }
+      
+          .wish-form button:hover,
+          .wish-form button:focus {
+            color: #fff !important;
+            background-color: #1a0674fb;
+          }
+      
+          /* Google Forms  */
+          .main-content iframe[src] {
+            opacity: 1;
+          }
+    
+          #_form_61FC6D3D7BD3C_ {
+            font-size: 14px;
+            line-height: 1.6;
+            font-family: arial, helvetica, sans-serif;
+            margin: 0;
+          }
+    
+          #_form_61FC6D3D7BD3C_ * {
+            outline: 0;
+          }
+    
+          ._form_hide {
+            display: none;
+            visibility: hidden;
+          }
+    
+          ._form_show {
+            display: block;
+            visibility: visible;
+          }
+    
+          #_form_61FC6D3D7BD3C_._form-top {
+            top: 0;
+          }
+    
+          #_form_61FC6D3D7BD3C_._form-bottom {
+            bottom: 0;
+          }
+    
+          #_form_61FC6D3D7BD3C_._form-left {
+            left: 0;
+          }
+    
+          #_form_61FC6D3D7BD3C_._form-right {
+            right: 0;
+          }
+    
+          #_form_61FC6D3D7BD3C_ input[type="text"],
+          #_form_61FC6D3D7BD3C_ input[type="date"],
+          #_form_61FC6D3D7BD3C_ textarea {
+            padding: 6px;
+            height: auto;
+            border: #979797 1px solid;
+            border-radius: 4px;
+            color: #000 !important;
+            font-size: 14px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+          }
+    
+          #_form_61FC6D3D7BD3C_ textarea {
+            resize: none;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._submit {
+            -webkit-appearance: none;
+            cursor: pointer;
+            font-family: arial, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            background: #1a0674fb !important;
+            border: 0 !important;
+            -moz-border-radius: 2px !important;
+            -webkit-border-radius: 2px !important;
+            border-radius: 2px !important;
+            color: #fff !important;
+            padding: 7px !important;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._close-icon {
+            cursor: pointer;
+            background-image: url('https://d226aj4ao1t61q.cloudfront.net/esfkyjh1u_forms-close-dark.png');
+            background-repeat: no-repeat;
+            background-size: 14.2px 14.2px;
+            position: absolute;
+            display: block;
+            top: 11px;
+            right: 9px;
+            overflow: hidden;
+            width: 16.2px;
+            height: 16.2px;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._close-icon:before {
+            position: relative;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._form-body {
+            margin-bottom: 30px;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._form-image-left {
+            width: 150px;
+            float: left;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._form-content-right {
+            margin-left: 164px;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._form-branding {
+            color: #fff;
+            font-size: 10px;
+            clear: both;
+            text-align: left;
+            margin-top: 30px;
+            font-weight: 100;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._form-branding ._logo {
+            display: block;
+            width: 130px;
+            height: 14px;
+            margin-top: 6px;
+            background-image: url('https://d226aj4ao1t61q.cloudfront.net/hh9ujqgv5_aclogo_li.png');
+            background-size: 130px auto;
+            background-repeat: no-repeat;
+          }
+    
+          #_form_61FC6D3D7BD3C_ .form-sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._form-label,
+          #_form_61FC6D3D7BD3C_ ._form_element ._form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+          }
+    
+          #_form_61FC6D3D7BD3C_._dark ._form-branding {
+            color: #333;
+          }
+    
+          #_form_61FC6D3D7BD3C_._dark ._form-branding ._logo {
+            background-image: url('https://d226aj4ao1t61q.cloudfront.net/jftq2c8s_aclogo_dk.png');
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._form_element {
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 0;
+            max-width: 100%;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._form_element * {
+            font-size: 14px;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._form_element._clear {
+            clear: both;
+            width: 100%;
+            float: none;
+          }
+    
+          #_form_61FC6D3D7BD3C_ ._form_element._clear:after {
+            clear: left;
+          }
+    

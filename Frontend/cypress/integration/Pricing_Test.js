@@ -38,11 +38,13 @@ describe('Pricing Page', () => {
         cy.get('input[name="date"]').type('02/06/2022').should('have.value', "02/06/2022");
         // cy.get('input[name="password"]').type('Qwerty123').should('have.value', "Qwerty123");
 
-        cy.contains('Submit').click();
-        cy.url().should('include', '/popup-message');
+        cy.contains('Search').click();
+        cy.url().should('include', '/booking-options');
 
-        cy.get('h1').should('contain', 'Succesfully Signed-Up');
-        cy.contains('Continue').click();
+        cy.get('h1').should('contain', 'Select any one of the following shipping options');
+        cy.contains('FEDEX').click();
+        cy.contains('Book Now').click();
+        cy.get('h1').should('contain', 'Booking Done');
     })
 })
 //  describe('Pricing', () => {

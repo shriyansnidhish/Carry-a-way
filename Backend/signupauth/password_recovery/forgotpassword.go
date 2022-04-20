@@ -18,7 +18,7 @@ import(
  	"CAW/Backend/signupauth/models"
  	"CAW/Backend/signupauth/database"
  	"CAW/Backend/signupauth/controllers"
-	"CAW/Backend/signupauth/usersessions"
+	"CAW/Backend/signupauth/user sessions"
  )
  //template to access FE html pages
 var tmp*template.Template 
@@ -285,7 +285,7 @@ func forgotPWverHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	fmt.Println("forgotten password has been reset")
-	ud.Message = "Password has been successfully Updated"
+	ud.Message = "Your password has been reset"
 	tmp.ExecuteTemplate(w, "login.html", ud)
 }
 
@@ -338,4 +338,15 @@ func checkPasswordCriteria(password string) error {
 	}
 	return nil
 }
-
+func main() {
+	tmp, _ = template.ParseGlob("templates/CAW/Frontend/login.html")
+	var err error
+	db, err = sql.Open("mysql", "root:"+os.Getenv("Praneeth11")+"@tcp(localhost:3306)/testdb?parseTime=true")
+	if err != nil {
+		panic(err.Error())
+	}
+	defer db.Close()
+	http.HandleFunc("/forgotpw", forgotpwChangeHandler)
+	http.HandleFunc("/forgotpwval", forgotPasswordValue)
+	http.HandleFunc("/forgotpwver", forgotPWverHandler)
+}

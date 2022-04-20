@@ -32,6 +32,7 @@ type Orderstable struct{
 type Dispute struct{
 	Disputeeligibility string `json:"de"`
 	Description string `json:"desc"`
+	Orderid string `json:"oid"`
 } 
 type SigninInfo struct{
 	Username string
@@ -40,7 +41,13 @@ type SigninInfo struct{
 type Distance struct{
 	SourceDest string `json:"sd"`
 	Dist int `json:"dist"`
+	MinCost int `json:"mcost"`
 }
+type ChatMessage struct {
+	Username string `json:"username"`
+	Text     string `json:"text"`
+}
+
 
 
 

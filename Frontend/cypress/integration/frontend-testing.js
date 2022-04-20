@@ -21,14 +21,14 @@ describe('Navigation Menu Tests', () => {
     })
 
     it('Open Pricing', () =>{
-        cy.contains('Sign In').click();
+        cy.contains('Pricing').click();
         cy.url().should('include', '/pricing');
     })
   })
 
 describe('Sign Up User', () => {
     it('Navigate to Sign Up', () => {
-        cy.contains('Sign In').click();
+        cy.contains('Sign up').click();
         cy.url().should('include', '/login');
     })
 
@@ -45,18 +45,19 @@ describe('Sign Up User', () => {
         cy.contains('Continue').click();
     })
 })
-describe('Sign In User', () => {
-    it('Navigate to Log In', () => {
-        cy.contains('Log In').click();
-        cy.url().should('include', '/login')
-    })
+ describe('Sign In User', () => {
+     it('Navigate to Log In', () => {
+         cy.contains('Log In').click();
+         cy.url().should('include', '/login')
+     })
 
-    it('Populate Form', () => {
-        cy.get('input[name="email"]').type("Siva.praneeth@gmail.com").should('have.value', 'Siva.praneeth@gmail.com');
-        cy.get('input[name="password"]').type('Qwerty123').should('have.value', "Qwerty123");
-    })
+     it('Populate Form', () => {
+         cy.get('input[name="email"]').type("Siva.praneeth@gmail.com").should('have.value', 'Siva.praneeth@gmail.com');
+         cy.get('input[name="password"]').type('Qwerty123').should('have.value', "Qwerty123");
+     })
 
-    it('Log In', () => {
-        cy.get('button[name="loginbutton"]').click();
-    })
-})
+     it('Log In', () => {
+         cy.get('button[name="loginbutton"]').click();
+     })
+  })
+

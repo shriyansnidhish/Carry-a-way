@@ -104,8 +104,8 @@ func TestLogin(t *testing.T) {
 }
 func TestLoginWrongCred(t *testing.T) {
 	var data = []byte(`{
-		"email": "gatormart1@ufl.edu",
-		"password": "gatormart1@A1"
+		"username": "siva000@gmail.com",
+		"password": "1122"
 	}`)
 
 	app := fiber.New()
@@ -115,7 +115,7 @@ func TestLoginWrongCred(t *testing.T) {
 	response, err := app.Test(req)
 
 	if err != nil {
-		t.Errorf("Handler Returned a wrong status code")
+		t.Errorf("Handler returned a wrong status code")
 	}
 
 	assert.Equal(t, fiber.StatusNotFound, response.StatusCode)

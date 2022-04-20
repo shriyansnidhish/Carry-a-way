@@ -76,7 +76,7 @@ func TestLogin(t *testing.T) {
 
 	app := fiber.New()
 
-	req, _ := http.NewRequest(http.MethodPost, "/login", bytes.NewBuffer(data))
+	req, _ := http.NewRequest(http.MethodPost, "/api/login", bytes.NewBuffer(data))
 
 	response, err := app.Test(req)
 
@@ -102,7 +102,25 @@ func TestLogin(t *testing.T) {
 
 	assert.Equal(t, fiber.StatusOK, response.StatusCode)
 }
-func TestLogoutWhenFailure(t *testing.T) {
+func TestLoginWrongCred(t *testing.T) {
+	var data = []byte(`{
+		"email": "gatormart1@ufl.edu",
+		"password": "gatormart1@A1"
+	}`)
+
+	app := fiber.New()
+
+	req, _ := http.NewRequest("POST", "/api/login", bytes.NewBuffer(data))
+
+	response, err := app.Test(req)
+
+	if err != nil {
+		t.Errorf("Handler Returned a wrong status code")
+	}
+
+	assert.Equal(t, fiber.StatusNotFound, response.StatusCode)
+}
+func TestLogoutWhenIncorrect(t *testing.T) {
 	var data = []byte(`{}`)
 
 	app := fiber.New()

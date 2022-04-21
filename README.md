@@ -37,6 +37,9 @@ Backend Api document link https://github.com/shriyansnidhish/Carry-a-way/tree/sh
 # Project demo video link
 https://drive.google.com/file/d/1nUXVa9W_sNc6zP6JJ9hQSCA_Vx6skMJZ/view?usp=sharing
 
+# Cypress test video link
+https://drive.google.com/file/d/1P-VP8WNh6CLGMf2LLEygWaJ1OAWmq44b/view?usp=sharing
+
 # Backend execution command
 - go run signupauth.go
 

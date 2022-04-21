@@ -33,3 +33,12 @@ Backend Api document link https://github.com/shriyansnidhish/Carry-a-way/tree/De
 
 # Sprint 4
 Backend Api document link https://github.com/shriyansnidhish/Carry-a-way/tree/shriyansnidhish/Documents/Sprints%20demo%20documents/Sprint%204<br/>
+
+# Project demo video link
+https://drive.google.com/file/d/1nUXVa9W_sNc6zP6JJ9hQSCA_Vx6skMJZ/view?usp=sharing
+
+# Backend execution command
+- go run signupauth.go
+
+# Frontend execution command
+- ng serve

@@ -13,6 +13,7 @@ import { LoginService } from './login/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HelpComponent } from './help/help.component';
 import { BagCalculatorComponent } from './bag-calculator/bag-calculator.component';
+import { BookingOptionsComponent } from './booking-options/booking-options.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BagCalculatorComponent } from './bag-calculator/bag-calculator.componen
     LoginComponent,
     PricingComponent,
     HelpComponent,
-    BagCalculatorComponent
+    BagCalculatorComponent,
+    BookingOptionsComponent
   ],
   imports: [
     BrowserModule,

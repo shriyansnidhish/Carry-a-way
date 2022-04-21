@@ -284,10 +284,31 @@ img.wp-smiley,
       /* Mobile Nav Logo */
       @media (min-width: 768px) {
         .fl-page-header .fl-page-nav ul.sub-menu {
-          width: auto;
-          padding-top: 0px;
+          width: 15px;
+          padding-top: 15px;
         }
       }
+
+      @media (min-width: 992px){
+.fl-page-nav-right .fl-page-header-wrap {
+    border-bottom: 1px solid rgba(0,0,0,0.13);
+}
+      }
+
+      @media (min-width: 1100px){
+        .fl-page-nav-right.fl-page-nav-toggle-visible-always .fl-page-header-container, .fl-page-nav-right.fl-page-nav-toggle-visible-medium-mobile .fl-page-header-container, .fl-page-nav-right .fl-page-header-container {
+            padding-left: 0;
+            padding-right: 0;
+        }}
+        
+        @media (min-width: 992px){
+        .fl-page-nav-right .fl-page-header-row {
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }}
   
       /* Footer menu */
       .fl-page-footer a,
@@ -370,6 +391,11 @@ img.wp-smiley,
         h6 {
           font-size: 1.3em;
         }
+      }
+
+      navbar-default-color{
+        background-color: none;
+        border-color: none;
       }
   
       /* Extra small devices (phones, 767 and smaller) */
@@ -1187,14 +1213,16 @@ img.wp-smiley,
       /*home page image 1 positioning*/
       .log
       {
-        position:absolute;
-        top:-35ch;bottom:0ch;right: -50ch;
+        position: absolute;
+        top: -27ch;
+        bottom: 0ch;
+        right: -29.5ch;
       }
       /*home page image 2 positioning*/
       .log1
       {
         position:absolute;
-        top:-22ch;bottom:0ch;right: -50ch;
+        top:-22ch;bottom:0ch;right: -45ch;
       }
       /*home page image 3 positioning*/
       .log2

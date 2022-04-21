@@ -96,6 +96,7 @@
         src="//d3rxaij56vjege.cloudfront.net/form-serialize/0.3/serialize.min.js"></script>
     <style hs-beacon="active" data-styled-version="5.1.1"></style>
 </head>
+
 <body
     class="home page-template-default page page-id-199 fl-builder fl-framework-bootstrap fl-preset-default fl-full-width fl-builder-breakpoint-large cookies-not-set"
     itemscope="itemscope" itemtype="https://schema.org/WebPage" data-new-gr-c-s-check-loaded="14.1047.0"
@@ -206,28 +207,36 @@
     </div>
 
     <!--mailing options-->
-    <div class="items-center justify-between row">
-        <label style="margin-left: 30px;"><h3>REFERENCE NUMBER - 2022042210101BC</h3></label>
+    <div class="flex items-center justify-between row">
+        <label>Select any one of the following shipping options - </label>
     </div>
-    <div class="items-center justify-between row">
-        <table style="float: left; margin-left: 20px;">
+    <div class="flex items-center justify-between row">
+        <div class="button-group">
+            <label class="button button-radio">
+                <input aria-checked="false" name="type" id="ember85" class="ember-view" type="radio" value="fedex">
 
-            <tr>
-                <td style="padding: 10px;"><label>First Name - Sai Bhavana</label></td>
-                <td style="padding: 10px;"><label>Last Name - Nammi</label></td>
-            </tr>
-            <tr>
-                <td style="padding: 10px;"><label>Date - Apr 22, 2022</label></td>
-                <td style="padding: 10px;"><label>Courier - FEDEX</label></td>
-            </tr>
-            <tr>
-                <td style="padding: 10px;"><label>From - Gainesville, FL, US</label></td>
-                <td style="padding: 10px;"><label>To - New York, NY, US</label></td>
-            </tr>
+                <span class="button-radio__label" id="sign-in-label">FEDEX</span>
+            </label>
 
-        </table>
+            <label class="button button-radio">
+                <input aria-checked="true" name="type" id="ember87" class="ember-view" type="radio" value="UPS">
+
+                <span class="button-radio__label" id="sign-up-label">UPS</span>
+            </label>
+        </div>
     </div>
+
+    <div>
+        <h1 style="float:right; padding:10px 100px 10px 10px">Price : $ 156</h1>
+    </div>
+    <div style="float:right; padding:75px 300px 10px 10px">
+        <div class="flex items-center justify-between row">
+            <a routerLink="/help" class="nav-link"><button class="buttonClass">Book Now</button></a>
+        </div>
+    </div>
+   
 
 </body>
+
 
 </html>

@@ -1,47 +1,98 @@
-# Carry-a-way
-The idea of Carry-A-way is to provide users with a cheap, convenient, step-by-step tracking and messaging enabled shipping facility for their checkin luggage/item/sports/music kit etc. through courier service of their choice and get it picked/delivered at their origin/destination doorstep. All in just few clicks.<br/>
-Carry-A-way is a web application developed using Go and Angular which allows users to travel hassle free without a worry of carrying bulky luggage/items and paying heavy charges to airlines.
+# CARRY-A-WAY
+*A web-based luggage shipping and tracking application.*
 
-**Team:**<br/>
-Shriyans Nidhish (Backend)<br/>
-Namita (Frontend)<br/>
-Siva Praneeth (Backend)<br/>
-Bhavana Nammi (Frontend)<br/>
+## Contributors:
+* Shriyans Nidhish 
+* Namita 
+* Siva Praneeth 
+* Bhavana Nammi 
 
-**Technology Stack:**<br/>
-Go<br/>
-Angular 8<br/>
-Mysql
+## Problem Statement:
+The present system of journeying with hefty baggage and confronting steep airline fees is both cumbersome and financially straining for travelers. A solution that's both affordable and intuitive is essential, allowing travelers to seamlessly monitor and send their checked luggage via their chosen shipping service, guaranteeing a smooth travel journey.
 
-# Project-Board link
-https://github.com/shriyansnidhish/Carry-a-way/projects/1<br/>
+## About:
+Carry-A-way is an online platform crafted with Go and Angular that tackles the difficulties travelers encounter regarding the transport of their personal items. This tool offers a user-friendly tracking procedure, allowing users to choose their preferred delivery service and arrange for their belongings to be collected and delivered right to their starting point or end location. With Carry-A-way, users can embark on their journey without the burden of lugging around heavy bags or facing substantial airline fees.
 
-# Backend unit test video
+This project was generated with **Angular CLI version 16.0.5**
+
+## Key Features:
+* **Scheduled the pick-up and delivery:** Users can easily schedule the pick-up and delivery of their luggage/items from their origin to the destination doorstep.
+* **Choice of Courier Services:** Carry-A-way enables users to select their preferred courier service provider for shipping.
+* **Cost-Effective Solution:** Users can avoid the heavy charges imposed by airlines for carrying bulky luggage.
+* **Step-by-Step Tracking:** Provides real-time tracking of the shipped items, allowing users to monitor their progress.
+* **Messaging Enabled:** Users can communicate directly with the courier service provider through the messaging feature, ensuring effective coordination and updates.
+
+## Installation and Execution
+### Installation
+* Code file: Download the folder “Carry-a-way”
+* Angular: Setup angular in your system by navigating to the project and running the below command in the terminal.
+
+### Build
+* Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+ng build
+```
+### Backend execution command
+```
+go run signupauth.go
+```
+### Frontend execution command
+```
+ng serve
+```
+* Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+http://localhost:4200/
+```
+
+## Technology Stack:
+* Backend: Go (Golang) for server-side development
+* Frontend: Angular for building the user interface
+* Database: MySql
+* IDE : Microsoft Visual Studio Code
+* Version Control : Github repository
+
+## Backend unit test video
 https://drive.google.com/file/d/1WF6RuD6OWyeMDitoBRbAr8Ip2n5I43jH/view?usp=sharing<br/>
 
-# Sprint 1 
-Back end demo video link https://drive.google.com/file/d/13BEGO7NGnLeugfpey8UFFCCTKo3zN_wh/view?usp=sharing<br/>
-Front end demo video link https://drive.google.com/file/d/1MU2GPqrY8i-x6JLY-GP0xhLomS35nI4k/view?usp=sharing<br/>
-Demo document link https://github.com/shriyansnidhish/Carry-a-way/tree/Development/Documents/Sprints%20demo%20documents/sprint%201
-
-# Sprint 2
-Frontend-backend integration demo video link https://drive.google.com/file/d/1efNOS1QuXMtIsEX-kKN_DQ6LkJeRWjwW/view?usp=sharing<br/>
-Demo Document Link https://github.com/shriyansnidhish/Carry-a-way/tree/Development/Documents/Sprints%20demo%20documents/Sprint%202
-
-# Sprint 3
-Backend Api document link https://github.com/shriyansnidhish/Carry-a-way/tree/Development/Documents/Sprints%20demo%20documents/Sprint%203<br/>
-
-# Sprint 4
-Backend Api document link https://github.com/shriyansnidhish/Carry-a-way/tree/shriyansnidhish/Documents/Sprints%20demo%20documents/Sprint%204<br/>
-
-# Project demo video link
+## Project demo video link
 https://drive.google.com/file/d/1nUXVa9W_sNc6zP6JJ9hQSCA_Vx6skMJZ/view?usp=sharing
 
-# Cypress test video link
+## Cypress test video link
 https://drive.google.com/file/d/1P-VP8WNh6CLGMf2LLEygWaJ1OAWmq44b/view?usp=sharing
 
-# Backend execution command
-- go run signupauth.go
+## Project Milestones:
+The project has been divided into 4 sprints to build the complete system. Each sprint is a 2 weeks long sprint and are dedicated to work on different user stories.
 
-# Frontend execution command
-- ng serve
+### Sprint 1
+* Initialize the working environment.
+* Development of the main landing page.
+* Setting up all redirect links on the main page.
+* Development of a dedicated page detailing website operations.
+* Assessment of the deployed features.
+
+### Sprint 2
+* Architecture and setup of user registration and login modules.
+* Development and integration of the cost structure module.
+* Evaluation of the new functionalities.
+
+### Sprint 3
+* Development and integration of baggage reservation features.
+* Introduction and setup of baggage cost estimator tools.
+* Review and quality check of the new additions.
+
+### Sprint 4
+* Deployment of baggage tracking updates module.
+* Integration of the transaction processing system.
+* Setup of communication and chat modules.
+* Quality assurance of the added features.
+
+## Project Flowchart:
+![Home Page (1)](https://github.com/Namita-Namita/Carry-a-way/assets/31967922/e2d6d907-6baa-4ab4-9b59-256812a4ac3b)
+
+
+## Future Enhancements:
+* **Faster Delivery Choices:** Recognizing the urgency of some travelers and situations, we're aiming to introduce faster delivery alternatives. This upgrade will offer a spectrum of quick dispatch choices, ensuring timely arrival of luggage when most crucial.
+* **Intelligent Support Chatbot:** To elevate our client assistance and ensure continuous support, our roadmap includes the launch of a chatbot driven by artificial intelligence. This addition will instantly address customer inquiries, navigate users on our platform, and offer on-the-spot problem-solving, ensuring 24/7 flawless client engagement.
+* **Interface Revamp:** We're committed to offering a top-notch user experience, blending usability with visual charm. In line with this, an extensive redesign of our app's interface is on the horizon. The goal is to amplify its user-friendliness, visual allure, and intuitive navigation.
+* **Streamlined Checkout Mechanism:** For a more agile order finalization, we're developing an enhanced mechanism for producing order IDs and barcodes. This refinement will foster improved parcel tracking and management, giving customers real-time and precise luggage updates.
